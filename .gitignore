@@ -26,3 +26,5 @@ dist-ssr
 
 _superseded/
 _index.html
+
+src/viewer/*.code-workspace

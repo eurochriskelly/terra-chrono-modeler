@@ -7,9 +7,11 @@ export default {
 };
 
 const Template = (args) => (
-    <div>
-        <h1>Timeline</h1>
-        <svg width="100%" height="900px" style={{ background: '#ffffcc' }}>
+    <div style={{
+        background: '#443333',
+        height: '600px',
+    }}>
+        <svg width="100%" height="900px" style={{ background: 'none' }}>
             <TimeLine {...args} />
         </svg>
     </div>
