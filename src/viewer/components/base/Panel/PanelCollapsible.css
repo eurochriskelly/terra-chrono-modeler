@@ -1,0 +1,31 @@
+.panel-collapsible-container {
+    position: relative;
+    transition: width 1s;
+    /* default 1s transition for width. Add height if using north/south */
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+    background-color: #ddd;
+    border: 2px solid #bbb;
+    /* By default, it should take up the full width */
+}
+
+.panel-collapsible-container.collapsed {
+    transition: width 0.25s;
+    /* Transition when collapsing */
+}
+
+.toggle-button {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    background: none;
+    border: none;
+}
+
+.collapsed {
+    width: 5px;
+    min-height: 20px;
+    min-width: 20px;
+    /* Collapse to 0 width */
+}

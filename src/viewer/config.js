@@ -1,0 +1,5 @@
+const CONFIG  = {
+    SCALE_FACTOR: 0.001,
+    RADIUS_EARTH: 6371,
+    RADIUS_EPOCH: 3200,
+}

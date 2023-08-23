@@ -1,0 +1,37 @@
+#backdropDetails {}
+
+#backdropDetails .selected {
+    background-color: #d4bc4794;
+}
+
+#backdropDetails table {
+    width: 100%;
+    max-width: 200px;
+    margin-left: 0;
+}
+
+#backdropDetails table td {
+    border: 1px solid #bbb;
+    font-size: 0.9em;
+}
+
+#backdropDetails h4 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: normal;
+    color: #999;
+    font-size: 0.8em;
+    margin: 0;
+    margin-top: 6px;
+    margin-bottom: 4px;
+    letter-spacing: 0.1em;
+    margin-left: 0.7em;
+    text-transform: uppercase;
+}
+
+#backdropDetails .title {
+    font-weight: bold;
+    margin-right: 3px;
+    text-transform: uppercase;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 0.9em;
+}

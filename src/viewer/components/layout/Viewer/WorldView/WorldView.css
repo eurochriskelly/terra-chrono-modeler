@@ -1,0 +1,15 @@
+.worldView {
+    background-color: blue;
+    color: white;
+    position: 'relative';
+    width: '100%';
+    height: '100%';
+}
+
+.worldView #map {
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    position: absolute;
+}

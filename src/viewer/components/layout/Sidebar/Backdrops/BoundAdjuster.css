@@ -1,0 +1,41 @@
+.boundAdjuster {
+    padding: 2px;
+}
+
+.compass-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.compass-row:last-child {
+    margin-bottom: 0;
+}
+
+.compass-cell {
+    margin-right: 10px;
+}
+
+.compass-cell:last-child {
+    margin-right: 0;
+}
+
+.compass-input {
+    width: 60px;
+    padding: 5px 1px;
+    margin-top: 5px;
+    text-align: right;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.boundAdjuster label {
+    display: block !important;
+    text-transform: uppercase;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 0.8em;
+    color: #888;
+    letter-spacing: 0.05em;
+    text-align: center;
+}

@@ -1,0 +1,47 @@
+.leaflet-control-attribution {
+    display: none;
+}
+
+.backdrop {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.backdrop input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.detailed-view {
+    display: none;
+    /* Hidden by default. Show it when a backdrop is selected. */
+    border-top: 1px solid #bbb;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+#sidebar label {
+    display: block;
+    font-family: sans-serif;
+    margin-top: 10px;
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+
+#sidebar .backdrop {
+    display: block;
+
+}
+
+#sidebar .backdrop label {
+    display: inline;
+}
+
+#sidebar .backdrop input[type="checkbox"] {
+    display: inline;
+}
+
+.selected {
+    background-color: #d4bc4794;
+}

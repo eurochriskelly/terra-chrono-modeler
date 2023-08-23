@@ -1,0 +1,113 @@
+.selected {
+    background-color: #ae986a4a;
+}
+
+.drillDownList {
+    border-top: 5px solid #eee;
+
+}
+
+.drillDownList input[type="checkbox"] {
+    margin: 2px 8px 2px 3px;
+}
+
+.drillDownList>.listItems {
+    margin-bottom: 5px;
+}
+
+.examine {
+    background: #cacaca78;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 4px auto;
+    grid-template-rows: auto;
+    border: 1px inset;
+    padding: 0;
+}
+
+.examine>div:first-child {
+    align-self: start;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    max-width: 3px;
+    background-color: #555;
+}
+
+.examine div {
+    margin-left: 3px;
+}
+
+.provided {
+    position: relative;
+    margin-bottom: 9px;
+}
+
+.provided .tr-icon {
+    position: absolute;
+    color: #777777;
+    right: 0px;
+    top: 0px;
+    padding: 1px 3px;
+}
+
+
+.drillDownList .listItem {
+    display: grid;
+    grid-template-columns: 40px auto 30px 40px;
+}
+
+.drillDownList .listItem .color {
+    width: 18px;
+    height: 18px;
+    margin: 2px;
+    border: 2px solid white;
+}
+
+.drillDownList .allowAdd {
+    border: 1px solid #ccc;
+    padding: 0px;
+    margin: 8px 9px 0 9px;
+    display: grid;
+}
+
+.drillDownList .allowAdd input {
+    position: relative;
+    width: 100%;
+}
+
+.drillDownList .allowAdd .fa-plus {
+    margin-right: auto;
+    /* show in center */
+    margin-left: auto;
+    /* show in center */
+    color: #888;
+    padding: 3px 0;
+
+}
+
+.drillDownList .allowAdd:hover .fa-plus {
+    color: #000;
+}
+
+.drillDownList .active {
+    color: white;
+    background-color: #7c7c7c;
+    font-weight: bold;
+}
+
+
+.drillDownList .activate {
+    display: none;
+}
+
+.drillDownList .selected .activate {
+    display: inline-block;
+    color: #b6ad99;
+    margin: 0;
+    text-align: center;
+}
+
+.drillDownList .selected .activate:hover {
+    color: blue;
+}

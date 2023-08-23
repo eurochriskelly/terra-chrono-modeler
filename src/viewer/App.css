@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    background-color: blanchedalmond;
+}
+
+.grid-container {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    grid-template-columns: 200px auto;
+    /* 200px for 'a', 1fr for 'b' */
+    grid-template-rows: auto 200px;
+    /* 1fr for 'b', 200px for 'c' */
+    grid-gap: 0px;
+    /* Optional gap between grid items */
+    height: 100vh;
+    /* Set the grid container to full viewport height */
+}
+
+#sidebar {
+    grid-row: 1 / span 2;
+    /* 'a' spans both rows */
+}
+
+#viewer {
+    grid-row: 1;
+    /* 'b' is in the first row */
+    grid-column: 2;
+    /* 'b' is in the second column */
+}
+
+#commandLine {
+    grid-row: 2;
+    /* 'c' is in the second row */
+}

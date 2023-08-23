@@ -1,0 +1,38 @@
+#epochFinder {
+    background: none;
+    color: #ccc;
+    margin-left: 10px;
+    font-size: 1.1em;
+}
+
+#epochFinder .promptNextTimespan {
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+#epochFinder .pathFinder {
+    margin-bottom: 8px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+#epochFinder .timespanSelect {
+    width: 100%;
+    margin-top: 25px;
+    padding-top: 3px;
+    margin-left: 25px;
+
+}
+
+#epochFinder .timespanSelect>span:first-child {
+    padding-right: 10px;
+    font-size: 14px;
+    text-align: bottom;
+    vertical-align: center;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    white-space: nowrap;
+    margin-top: 6px;
+    font-weight: bold;
+}

@@ -1,0 +1,25 @@
+.loadingScreen {
+    background-color: #444;
+    margin-left: auto;
+    font-size: 5em;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 300px;
+    display: grid;
+    grid-template-columns: auto 50px auto;
+    align-items: center;
+    /* added property */
+}
+
+.loadingScreen>span {
+    width: 5em;
+    color: white;
+}
+
+.loadingScreen>span .info {
+    font-size: 0.3em;
+    padding: 20px;
+    background-color: red;
+}
