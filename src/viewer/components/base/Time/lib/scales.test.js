@@ -1,6 +1,7 @@
-import { mapRangeToScale, getDiscreetValues } from "./scales";
+import { mapRangeToScale, getDiscreteValues } from "./scales";
 
 describe("mapRangeToScale", () => {
+
     it('maps a range to a scale', () => {
         const startRange = -540;
         const endRange = -23;
@@ -16,12 +17,15 @@ describe("mapRangeToScale", () => {
         const result = mapRangeToScale(domain, range, value)
 
         expect(result).toBe(7.5)
+
+
     })
 
     it('finds discreet values', () => {
         const range = [-2020, -124];
         const interval = 500;
-        const result = getDiscreetValues(range, interval)
+        const result = getDiscreteValues(range, interval)
         expect(result).toHaveLength(4)
     })
+
 })

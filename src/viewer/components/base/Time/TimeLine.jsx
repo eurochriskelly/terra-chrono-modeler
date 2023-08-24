@@ -1,18 +1,22 @@
 import React from 'react';
 
-import { mapRangeToScale, getDiscreetValues } from './lib/scales'
+import { mapRangeToScale, getDiscreteValues } from './lib/scales'
 
 const STROKE_COLOR = 'white'
 const TICK_DEFINITIONS = [
     { interval: 0.2, height: 1.8, style: { stroke: '#777', strokeWidth: 0.5 } },
     { interval: 1, height: 4 },
     { interval: 10, height: 8, style: {} },
-    { interval: 50, height: 16, style: { strokeWidth: 1.3 } },
-    { interval: 100, height: 24, style: { strokeWidth: 2 } },
-    { interval: 500, height: 48, style: { strokeWidth: 3 } },
+    { interval: 50, height: 16, style: { strokeWidth: 1.1 } },
+    { interval: 100, height: 24, style: { strokeWidth: 1.4 } },
+    { interval: 500, height: 48, style: { strokeWidth: 1.8 } },
 ];
 
-const TimeScale = ({ startMa, endMa, width }) => {
+/**
+ * This component accepts children that are rendered at provided locations on the timeline.
+ *
+ */
+const TimeScale = ({ startMa, endMa, width, children }) => {
     const ticks = [
         {
             type: `Manual`,
@@ -23,10 +27,11 @@ const TimeScale = ({ startMa, endMa, width }) => {
                 strokeWidth: 4,
             }
         }
-    ]
+    ].slice(1)
+
 
     TICK_DEFINITIONS.forEach(({ interval, height, style = {} }) => {
-        const dvals = getDiscreetValues([-startMa, -endMa], interval)
+        const dvals = getDiscreteValues([-startMa, -endMa], interval)
         let gap = 100
         if (width / dvals.length > 5) {
             dvals.forEach((d, index) => {
@@ -49,14 +54,13 @@ const TimeScale = ({ startMa, endMa, width }) => {
     return (
         <g >
             {ticks
-                //.filter(x => x.type !== 'Manual')
+                // .filter(x => x.type !== 'Manual')
                 // .filter(x => x.type !== '50Ma')
-                //.filter(x => x.type !== '500Ma')
-                //.slice(0, 10)
-                .map(({ type, position, height, style, index }) => (
-                    console.log(type) ||
+                // .filter(x => x.type !== '500Ma')
+                // .slice(0, 10)
+                .map(({ type, position, height, style }, index) => (
                     < line
-                        key={index}
+                        key={`l${index}`}
                         x1={position}
                         y1={height}
                         x2={position}
@@ -64,6 +68,14 @@ const TimeScale = ({ startMa, endMa, width }) => {
                         style={style}
                     />
                 ))}
+            {
+                React.Children.map(children, child => {
+                    // Double the value of the 'x' prop for each child
+                    const newX = mapRangeToScale([-startMa, -endMa], [0, width], -(child.props.xPos))
+                    console.log({newX})
+                    return React.cloneElement(child, { xPos: newX });
+                })
+            }
         </g>
     );
 };

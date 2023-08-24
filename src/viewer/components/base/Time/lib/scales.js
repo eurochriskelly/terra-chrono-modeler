@@ -12,7 +12,7 @@ export function mapRangeToScale(domain, range, value) {
 }
 
 
-export function getDiscreetValues(range, interval) {
+export function getDiscreteValues(range, interval) {
     const start = Math.ceil(range[0] / interval) * interval;
     const end = range[1];
     let values = [];
