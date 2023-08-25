@@ -28,6 +28,7 @@ body {
 #sidebar {
     grid-row: 1 / span 2;
     /* 'a' spans both rows */
+    user-select: none;
 }
 
 #viewer {

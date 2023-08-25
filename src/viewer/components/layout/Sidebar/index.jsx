@@ -10,7 +10,7 @@ import './Sidebar.css'
 function Sidebar(props) {
     return (
         <PanelCollapsible id="sidebar" debug={true}>
-            <div style={{ minHeight: '24px', backgroundColor: '#bbb' }}></div>
+            <div style={{ minHeight: '24px', backgroundColor: '#222' }}></div>
             <PanelSection title="mode" icon="earth">
                 <ModeSwitcher {...props} />
             </PanelSection>

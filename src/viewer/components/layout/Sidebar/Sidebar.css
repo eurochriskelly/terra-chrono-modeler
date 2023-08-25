@@ -1,6 +1,6 @@
 #sidebar {
     /* or adjust as necessary */
-    background-color: #ddd;
+    background-color: #222;
     overflow-y: auto;
     /* if content exceeds the sidebar height */
     width: 200px;
