@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHourglassHalf, faHandPointDown } from '@fortawesome/free-solid-svg-icons';
 import TimePeriodBar from './TimePeriodBar';
 import BreadCrumb from './BreadCrumb';
+import { TimeLine } from '../../../../base/Time';
 import { getTimespan, periods } from './lib/geological-time-chart';
 
 import './EpochFinder.css'
@@ -12,7 +13,6 @@ function EpochFinder() {
     const [selectedEra, setSelectedEra] = useState(null);
     const [selectedPeriod, setSelectedPeriod] = useState(null);
     const [selectedEpoch, setSelectedEpoch] = useState(null);
-
     const selections = {
         selectedEon, selectedEra, selectedPeriod, selectedEpoch,
         setSelectedEon, setSelectedEra, setSelectedPeriod, setSelectedEpoch
@@ -41,8 +41,12 @@ function EpochFinder() {
                     />
                 </div>
                 <PromptNextTimespan selections={selections} />
+
             </div>
             <TimePeriodBar periods={periods} selections={selections} />
+            <TimeLine
+                startMa={540} endMa={0} width={900}
+            />
         </div >
     )
 }

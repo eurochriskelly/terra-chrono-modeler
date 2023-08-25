@@ -3,6 +3,18 @@
     color: #ccc;
     margin-left: 10px;
     font-size: 1.1em;
+    display: grid;
+    user-select: none;
+    height: 100%;
+    grid-template-rows: 30px auto 40px;
+    margin: 0;
+    padding: 0;
+
+}
+
+#epochFinder>div:first-child {
+    margin: 0;
+    background: #000000aa;
 }
 
 #epochFinder .promptNextTimespan {
@@ -12,6 +24,8 @@
 }
 
 #epochFinder .pathFinder {
+    margin: 0;
+    padding: 0;
     margin-bottom: 8px;
     display: grid;
     grid-template-columns: 1fr auto;
@@ -35,4 +49,8 @@
     white-space: nowrap;
     margin-top: 6px;
     font-weight: bold;
+}
+
+svg {
+    user-select: none;
 }

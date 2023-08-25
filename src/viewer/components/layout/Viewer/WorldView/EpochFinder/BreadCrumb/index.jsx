@@ -23,7 +23,7 @@ const BreadCrumb = ({
     }
 
     if (!selected) return (
-        <span class="breadCrumb">
+        <span className="breadCrumb">
             <b>/</b>
             <span className='dots'>...</span>
         </span>
@@ -40,7 +40,7 @@ const BreadCrumb = ({
 
     const { color } = getTimespan(periods, path.reverse())
     return (
-        <span class="breadCrumb">
+        <span className="breadCrumb">
             <b>/</b>
             <span
                 onClick={() => deselectChildren(name)}

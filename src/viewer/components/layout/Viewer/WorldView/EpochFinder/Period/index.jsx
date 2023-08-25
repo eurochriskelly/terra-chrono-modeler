@@ -4,11 +4,13 @@ import chroma from 'chroma-js';
 import './Period.css'
 
 function Period({
+    key,
     data,
     barWidth, totalDuration,
     isSelected, isSiblingSelected,
     onSelect,
-    defaultWidth, x, y
+    defaultWidth, x, y,
+    gradientId,
 }) {
     const { name, start, end, color } = data;
     const [expanded, setExpanded] = useState(false);
@@ -23,34 +25,24 @@ function Period({
         <g className="periodGroup" onClick={() => {
             setExpanded(!expanded);
             onSelect();
-        }} transform={`translate(${x + 2}, ${y})`}>
+        }} transform={`translate(${x + 2}, ${y +3})`}>
+            <defs>
+                <linearGradient id={gradientId} x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor={color} stopOpacity={1.0} />
+                    <stop offset="3%" stopColor={color} stopOpacity={0.5} />
+                    <stop offset="5%" stopColor={color} stopOpacity={0.2} />
+                    <stop offset="80%" stopColor={color} stopOpacity={0} />
+                </linearGradient>
+            </defs>
             <rect
-                width={width - 4}
-                height="45"
-                fill={!isSiblingSelected
-                    ? color
-                    : isSelected
-                        ? chroma(color).darken().saturate(2).hex()
-                        : chroma(color).brighten(3).desaturate(2).hex()
-                }
-                stroke={isSelected
-                    ? 'black'
-                    : 'white'
-                }
-                strokeWidth={isSelected
-                    ? 3
-                    : 0.5
-                }
+                width={width - 6}
+                height="100%" // xxx
+                fill={`url(#${gradientId})`}
             />
             <text x={5} y="14"
                 fontFamily='sans-serif'
                 fontSize={15}
-                fill={!isSiblingSelected
-                    ? '#333'
-                    : isSelected
-                        ? 'white'
-                        : '#888'
-                }
+                fill={'black'}
             >{name.toUpperCase()}</text>
 
             {/* Start year label */}

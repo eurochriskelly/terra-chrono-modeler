@@ -32,7 +32,7 @@ export class SceneInfo {
             // Initialize geometrySphere and sphere before calling updateEpoch
             var geometrySphere = new SphereGeometry(this.radius, 32, 32)
             var materialSphere = new MeshBasicMaterial({
-                color: 0x010133, wireframe: false,
+                color: 0x001100, wireframe: false,
                 // opacity: 0.85, transparent: false
             })
             this.sphere = new Mesh(geometrySphere, materialSphere);

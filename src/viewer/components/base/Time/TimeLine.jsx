@@ -7,16 +7,16 @@ const TICK_DEFINITIONS = [
     { interval: 0.2, height: 1.8, style: { stroke: '#777', strokeWidth: 0.5 } },
     { interval: 1, height: 4 },
     { interval: 10, height: 8, style: {} },
-    { interval: 50, height: 16, style: { strokeWidth: 1.1 } },
-    { interval: 100, height: 24, style: { strokeWidth: 1.4 } },
-    { interval: 500, height: 48, style: { strokeWidth: 1.8 } },
+    { interval: 50, height: 12, style: { strokeWidth: 1.1 } },
+    { interval: 100, height: 16, style: { strokeWidth: 1.4 } },
+    { interval: 500, height: 20, style: { strokeWidth: 1.8 } },
 ];
 
 /**
  * This component accepts children that are rendered at provided locations on the timeline.
  *
  */
-const TimeScale = ({ startMa, endMa, width, children }) => {
+const TimeLine = ({ startMa, endMa, width, children }) => {
     const ticks = [
         {
             type: `Manual`,
@@ -28,7 +28,6 @@ const TimeScale = ({ startMa, endMa, width, children }) => {
             }
         }
     ].slice(1)
-
 
     TICK_DEFINITIONS.forEach(({ interval, height, style = {} }) => {
         const dvals = getDiscreteValues([-startMa, -endMa], interval)
@@ -51,33 +50,37 @@ const TimeScale = ({ startMa, endMa, width, children }) => {
         }
     })
 
+    // mirror svg group about horizontal axis
+    const transform = `translate(0, 30) scale(1, -1)`
     return (
-        <g >
-            {ticks
-                // .filter(x => x.type !== 'Manual')
-                // .filter(x => x.type !== '50Ma')
-                // .filter(x => x.type !== '500Ma')
-                // .slice(0, 10)
-                .map(({ type, position, height, style }, index) => (
-                    < line
-                        key={`l${index}`}
-                        x1={position}
-                        y1={height}
-                        x2={position}
-                        y2="0"
-                        style={style}
-                    />
-                ))}
-            {
-                React.Children.map(children, child => {
-                    // Double the value of the 'x' prop for each child
-                    const newX = mapRangeToScale([-startMa, -endMa], [0, width], -(child.props.xPos))
-                    console.log({newX})
-                    return React.cloneElement(child, { xPos: newX });
-                })
-            }
-        </g>
+        <svg width="100%" height="40px" style={{ background: 'none' }}>
+            <g transform={transform}>
+                {ticks
+                    // .filter(x => x.type !== 'Manual')
+                    // .filter(x => x.type !== '50Ma')
+                    // .filter(x => x.type !== '500Ma')
+                    // .slice(0, 10)
+                    .map(({ type, position, height, style }, index) => (
+                        <line
+                            key={`l${index}`}
+                            x1={position}
+                            y1={height}
+                            x2={position}
+                            y2={0}
+                            style={style}
+                        />
+                    ))}
+                {
+                    React.Children.map(children, child => {
+                        // Double the value of the 'x' prop for each child
+                        const newX = mapRangeToScale([-startMa, -endMa], [0, width], -(child.props.xPos))
+                        console.log({newX})
+                        return React.cloneElement(child, { xPos: newX });
+                    })
+                }
+            </g>
+        </svg>
     );
 };
 
-export default TimeScale;
+export default TimeLine;

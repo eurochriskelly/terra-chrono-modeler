@@ -33,12 +33,15 @@ function TimePeriodBar({ periods, selections }) {
         const totalDuration = getTotalDuration(timespans)
         const { left } = positions[`${from}s`] || { left: 0 }
         return (timespans && timespans.length &&
-            <g className="barGroup" transform={`translate(${left}, ${yval})`}>
+            <g className="barGroup"
+                key="barGroup"
+                transform={`translate(${left}, ${yval})`}>
                 {
                     timespans.map((period, index) => (
                         <Period
                             periods={timespans}
-                            key={index}
+                            key={`p${index}`}
+                            gradientId={`linearDown${index}`}
                             data={period}
                             totalDuration={totalDuration}
                             isSelected={selectedCurrent === period.name}
@@ -59,7 +62,7 @@ function TimePeriodBar({ periods, selections }) {
 
     return (
         <div>
-            <svg width={BAR_WIDTH} height="200">
+            <svg width={BAR_WIDTH} height="100%">
                 {
                     selectedEon || buildTimespanRow(
                         getTimespans(periods),

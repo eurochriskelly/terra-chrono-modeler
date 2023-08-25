@@ -3,6 +3,7 @@ import cors from 'cors';
 import axios from 'axios';
 import AxiosDigestAuth from '@mhoc/axios-digest-auth';
 import { httpPut, httpDelete, httpEval } from './curler.js';
+import { settings } from '../../config/environment.js';
 
 const digestAuth = new AxiosDigestAuth.default({
     username: 'admin',
@@ -11,6 +12,7 @@ const digestAuth = new AxiosDigestAuth.default({
 
 const app = express();
 const port = 3000;
+const { mlHostname, mlPort } = settings
 
 app.use(express.json()); // Middleware for parsing JSON bodies
 app.use(cors()); // Use cors middleware
@@ -18,6 +20,10 @@ app.use(cors()); // Use cors middleware
 // Serve static files from the 'dist' directory
 app.use(express.static('dist'));
 
+
+/**
+ * Forward document requests to database
+ */
 app.post('/api/documents', async (req, res) => {
     console.log('In API command [/api/documents] ...')
     console.log(req.body)
@@ -25,11 +31,11 @@ app.post('/api/documents', async (req, res) => {
         console.log('No URI specified in request body')
         return
     }
-    const path = `/v1/documents?uri=${req.body.uri}`
+    const path = `v1/documents?uri=${req.body.uri}`
     try {
         const fn = req.body.json ? httpPut : httpDelete
         await fn(
-            `http://localhost:8000${path}`,
+            `http://${mlHostname}:${mlPort}/${path}`,
             req.body.json
         )
         res.json({ status: 'ok' });
@@ -56,7 +62,7 @@ app.post('/api/command', async (req, res) => {
 
     try {
         const response = await httpEval(
-            `http://localhost:8000`,
+            `http://${mlHostname}:${mlPort}`,
             cmd, args
         )
         res.json(JSON.parse(response))

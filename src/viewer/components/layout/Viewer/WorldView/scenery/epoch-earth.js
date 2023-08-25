@@ -81,7 +81,7 @@ export class EpochEarth extends EpochEarthBase {
             sphere.material.color.set(0xdddddd)
         } else {
             sphere.material.opacity = 0.85
-            sphere.material.color.set(0x002200)
+            sphere.material.color.set(0x001100)
         }
         sphere.material.needsUpdate = true;
         this.scene.printSceneStats()

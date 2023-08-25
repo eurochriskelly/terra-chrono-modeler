@@ -1,9 +1,17 @@
 .worldView {
-    background-color: blue;
     color: white;
-    position: 'relative';
-    width: '100%';
-    height: '100%';
+    position: relative;
+}
+
+.worldView>div:first-child {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    left: 5px;
+    top: 5px;
+    z-index: 100;
+    height: 100px;
 }
 
 .worldView #map {

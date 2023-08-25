@@ -1,9 +1,9 @@
 import React from "react";
 import MapView from './MapView';
 import WorldView from './WorldView';
-import CesiumView from './CesiumView';
-import SculptView from './SculptView';
-import EpochFinder from './WorldView/EpochFinder';
+//import CesiumView from './CesiumView';
+// import SculptView from './SculptView';
+
 import LoadingScreen from '../../base/Interface/LoadingScreen'
 
 import './Viewer.css';
@@ -14,23 +14,26 @@ function Viewer(props) {
     const GetView = () => {
         switch (mode) {
             // Flat map view
-            case 'flat':
-                return <MapView {...props} />
+            case 'flat': return <MapView {...props} />
 
             // Round world view
             case 'round':
-            case 'world':
-                return <WorldView {...props} />
+            case 'world': return <WorldView {...props} />
 
             // Fully featured cesium viewer
             case 'advanced':
             case 'cesium':
-                return <CesiumView {...props} />
+                return (
+                    <div id="cesium">
+                        <div id="cesiumContainer" />
+                        {/* <CesiumView {...props} /> */}
+                    </div>
+                )
 
             // Sculpting view
             case 'sculpt':
-            case 'grow':
-                return <SculptView {...props} />
+            case 'grow': return <div />
+                //<SculptView {...props} />
 
             // R3F Sandbox
             case 'r3f':
@@ -40,10 +43,7 @@ function Viewer(props) {
                 return <LoadingScreen expectedMode={props.gestate.mode} />
         }
     }
-    return <div id="viewer">
-        <EpochFinder />
-        <GetView />
-    </div>
+    return <div id="viewer"><GetView /></div>
 }
 
 export default Viewer;

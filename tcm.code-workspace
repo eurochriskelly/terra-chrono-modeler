@@ -1,10 +1,14 @@
 {
 	"folders": [
 		/*
+		{
+			"name": "main",
+			"path": "./"
+		},
 		*/
 		{
 			"name": "focus",
-			"path": "./src/viewer/components/layout/Viewer/WorldView"
+			"path": "./src/viewer/components/layout/Viewer"
 		},
 		{
 			"name": "timeline",

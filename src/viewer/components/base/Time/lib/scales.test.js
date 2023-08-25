@@ -15,10 +15,7 @@ describe("mapRangeToScale", () => {
         const range = [0, 30];
         const value = -1750;
         const result = mapRangeToScale(domain, range, value)
-
         expect(result).toBe(7.5)
-
-
     })
 
     it('finds discreet values', () => {

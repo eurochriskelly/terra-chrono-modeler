@@ -42,12 +42,9 @@ export function setupPositions(positions, timespans, periodType, selected) {
     let { boundaries, widths } = getDimensions(
         timespans, selected, totalDuration, left
     )
-
     let sumWidths = widths.reduce((acc, w) => acc + w, 0)
-    console.log({ widths, sumWidths, k: key(current) })
     // For the selected period, we ignore the calulated width and maximize the
     // width of the selected period.
     positions[key(current)] = { ...positions[key(current)], boundaries, widths, sumWidths }
     positions[key(to)] = { ...positions[key(current)], left }
-    console.log({ current, positions })
-}
+ }

@@ -4,6 +4,7 @@ import { EnhancedScene } from './scenery/manage/enhanced-scene';
 import { WebGLRenderer, PerspectiveCamera } from 'three';
 import { EpochEarth } from './scenery/epoch-earth';
 import { ESceneInteract } from './scenery/manage/escene-interact';
+import EpochFinder from './EpochFinder';
 
 import './WorldView.css';
 
@@ -101,11 +102,9 @@ const WorldView = (props) => {
         <div className="worldView" style={{
             width: '100%',
             height: '100%',
-            display: 'grid',
-            position: 'relative',
-            gridTemplateRows: '30px auto',
             backgroundColor: isEditing ? 'yellow' : 'black',
         }}>
+            <EpochFinder />
             <div id="map" ref={mount}
                 style={{
 
