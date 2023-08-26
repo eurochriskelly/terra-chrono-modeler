@@ -41,4 +41,5 @@ body {
 #commandLine {
     grid-row: 2;
     /* 'c' is in the second row */
+    user-select: none;
 }

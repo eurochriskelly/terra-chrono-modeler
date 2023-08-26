@@ -79,9 +79,11 @@ export class EpochEarth extends EpochEarthBase {
             sphere.material.opacity = 0.8
             // make the color of the sphere white
             sphere.material.color.set(0xdddddd)
+            this.scene.background = new THREE.Color(0x103310)
         } else {
             sphere.material.opacity = 0.85
             sphere.material.color.set(0x001100)
+            this.scene.background = new THREE.Color(0x103310)
         }
         sphere.material.needsUpdate = true;
         this.scene.printSceneStats()

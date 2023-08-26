@@ -53,7 +53,7 @@ const TimeLine = ({ startMa, endMa, width, children }) => {
     // mirror svg group about horizontal axis
     const transform = `translate(0, 30) scale(1, -1)`
     return (
-        <svg width="100%" height="40px" style={{ background: 'none' }}>
+        <svg width="100%" height="40px" style={{ background: '#00000033' }}>
             <g transform={transform}>
                 {ticks
                     // .filter(x => x.type !== 'Manual')
@@ -74,7 +74,6 @@ const TimeLine = ({ startMa, endMa, width, children }) => {
                     React.Children.map(children, child => {
                         // Double the value of the 'x' prop for each child
                         const newX = mapRangeToScale([-startMa, -endMa], [0, width], -(child.props.xPos))
-                        console.log({newX})
                         return React.cloneElement(child, { xPos: newX });
                     })
                 }

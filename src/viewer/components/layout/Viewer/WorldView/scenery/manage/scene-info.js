@@ -36,7 +36,6 @@ export class SceneInfo {
                 // opacity: 0.85, transparent: false
             })
             this.sphere = new Mesh(geometrySphere, materialSphere);
-            console.log(this.sphere)
             this.scene.add(this.sphere)
             SceneInfo.globeCounter++
         }

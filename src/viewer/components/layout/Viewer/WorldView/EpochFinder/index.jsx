@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { withResizeDetector } from 'react-resize-detector';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHourglassHalf, faHandPointDown } from '@fortawesome/free-solid-svg-icons';
 import TimePeriodBar from './TimePeriodBar';
@@ -8,7 +9,7 @@ import { getTimespan, periods } from './lib/geological-time-chart';
 
 import './EpochFinder.css'
 
-function EpochFinder() {
+function EpochFinder({ width}) {
     const [selectedEon, setSelectedEon] = useState(null);
     const [selectedEra, setSelectedEra] = useState(null);
     const [selectedPeriod, setSelectedPeriod] = useState(null);
@@ -18,6 +19,20 @@ function EpochFinder() {
         setSelectedEon, setSelectedEra, setSelectedPeriod, setSelectedEpoch
     }
 
+    const getStartTime = () => {
+        const sels = [selectedEon, selectedEra, selectedPeriod, selectedEpoch].filter(x => x)
+        if (sels.length) {
+            return getTimespan(periods,sels)?.start
+        }
+        return 540
+    }
+    const getEndTime = () => {
+        const sels = [selectedEon, selectedEra, selectedPeriod, selectedEpoch].filter(x => x)
+        if (sels.length) {
+            return getTimespan(periods,sels)?.end
+        }
+        return 0
+    }
     return (
         <div id="epochFinder">
             <div className="pathFinder">
@@ -43,15 +58,13 @@ function EpochFinder() {
                 <PromptNextTimespan selections={selections} />
 
             </div>
-            <TimePeriodBar periods={periods} selections={selections} />
-            <TimeLine
-                startMa={540} endMa={0} width={900}
-            />
+            <TimePeriodBar periods={periods} selections={selections} width={width} />
+            <TimeLine startMa={getStartTime()} endMa={getEndTime()} width={width} />
         </div >
     )
 }
 
-export default EpochFinder
+export default withResizeDetector(EpochFinder);
 
 
 function PromptNextTimespan({ selections }) {

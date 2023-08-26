@@ -4,22 +4,18 @@ import chroma from 'chroma-js';
 import './Period.css'
 
 function Period({
-    key,
     data,
     barWidth, totalDuration,
     isSelected, isSiblingSelected,
     onSelect,
-    defaultWidth, x, y,
+    x, y,
     gradientId,
 }) {
     const { name, start, end, color } = data;
     const [expanded, setExpanded] = useState(false);
     const duration = start - end;
 
-
-    const width = (!isSelected && isSelected !== false)
-        ? (duration / totalDuration * barWidth)
-        : defaultWidth;
+    const width =  (duration / totalDuration * barWidth)
 
     return (
         <g className="periodGroup" onClick={() => {

@@ -47,13 +47,14 @@ const WorldView = (props) => {
                 return
             }
             EE.appearance = isEditing ? 'edit' : 'view'
+            scene.background = new THREE.Color(isEditing ? 0x103310 : 0xbbbbbb)
         },
         updateScene: () => {
             const scene = sceneRef.current
             const renderer = renderRef.current
             const camera = cameraRef.current
 
-            scene.background = new THREE.Color(isEditing ? 0xcccccc : 0x103310)
+
             EE.update({ gestate, layers, features, epochs })
 
             const updateSize = () => {

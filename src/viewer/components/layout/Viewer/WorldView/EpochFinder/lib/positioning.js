@@ -1,11 +1,11 @@
 import { BAR_WIDTH } from './config'
 
-function getDimensions(periods = [], selected, totalDuration, left) {
+function getDimensions(width, periods = [], selected, totalDuration, left) {
     const boundaries = [
         ...(periods || []).map((_, index) => periods
             .slice(0, index)
-            .reduce((acc, p) => acc + ((p.start - p.end) / totalDuration * BAR_WIDTH), left)),
-        BAR_WIDTH
+            .reduce((acc, p) => acc + ((p.start - p.end) / totalDuration * width), left)),
+        width
     ]
     return {
         boundaries,
@@ -32,7 +32,7 @@ export function getTimespans(periods, children = []) {
     return currentLevel
 }
 
-export function setupPositions(positions, timespans, periodType, selected) {
+export function setupPositions(width, positions, timespans, periodType, selected) {
     // let { boundaries, widths } = positions.eons
     const { current, to } = periodType
     const key = x => `${x}s`
@@ -40,7 +40,7 @@ export function setupPositions(positions, timespans, periodType, selected) {
     let { left } = positions[key(current)]
 
     let { boundaries, widths } = getDimensions(
-        timespans, selected, totalDuration, left
+        width, timespans, selected, totalDuration, left
     )
     let sumWidths = widths.reduce((acc, w) => acc + w, 0)
     // For the selected period, we ignore the calulated width and maximize the

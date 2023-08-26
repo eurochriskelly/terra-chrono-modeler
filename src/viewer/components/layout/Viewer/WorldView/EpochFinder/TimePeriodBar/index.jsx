@@ -3,11 +3,9 @@ import Period from '../Period';
 import { logMaker } from '../../../../../../common/logging'
 import { getTimespans, getTotalDuration, setupPositions } from '../lib/positioning';
 
-import { BAR_WIDTH } from '../lib/config';
-
 const ii = logMaker('TimePeriodBar', 'ii')
 
-function TimePeriodBar({ periods, selections }) {
+function TimePeriodBar({ periods, selections, width = 800}) {
     const {
         selectedEon, selectedEra, selectedPeriod, selectedEpoch,
         setSelectedEon, setSelectedEra, setSelectedPeriod, setSelectedEpoch
@@ -29,7 +27,7 @@ function TimePeriodBar({ periods, selections }) {
     ) => {
         const { from, current } = periodType
         if (!timespans) return null
-        setupPositions(positions, timespans, periodType, selectedCurrent)
+        setupPositions(width, positions, timespans, periodType, selectedCurrent)
         const totalDuration = getTotalDuration(timespans)
         const { left } = positions[`${from}s`] || { left: 0 }
         return (timespans && timespans.length &&
@@ -50,9 +48,8 @@ function TimePeriodBar({ periods, selections }) {
                                 ii(`onSelect: ${period.name}`);
                                 setSelectedFn(selectedCurrent === period.name ? null : period.name);
                             }}
-                            barWidth={BAR_WIDTH}
+                            barWidth={width}
                             x={positions[`${current}s`].boundaries[index]}
-                            defaultWidth={positions[`${current}s`].widths[index]}
                             y={0}
                         />
                     ))}
@@ -62,7 +59,7 @@ function TimePeriodBar({ periods, selections }) {
 
     return (
         <div>
-            <svg width={BAR_WIDTH} height="100%">
+            <svg width={width} height="100%">
                 {
                     selectedEon || buildTimespanRow(
                         getTimespans(periods),
