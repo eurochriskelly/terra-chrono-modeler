@@ -105,10 +105,9 @@ const WorldView = (props) => {
             height: '100%',
             backgroundColor: isEditing ? 'yellow' : 'black',
         }}>
-            <EpochFinder />
+            <EpochFinder epochs={epochs}  />
             <div id="map" ref={mount}
                 style={{
-
                     top: 0, // Position it at the top
                     left: 0, // Position it at the left
                     zIndex: 1

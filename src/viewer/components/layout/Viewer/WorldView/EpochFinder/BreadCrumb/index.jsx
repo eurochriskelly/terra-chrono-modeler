@@ -5,7 +5,7 @@ import { getTimespan, periods } from '../lib/geological-time-chart';
 import './BreadCrumb.css'
 
 const BreadCrumb = ({
-    name, selected, selections
+    name, selected, selections, setReady
 }) => {
     const {
         selectedEon, selectedEra, selectedPeriod, selectedEpoch,
@@ -40,7 +40,7 @@ const BreadCrumb = ({
 
     const { color } = getTimespan(periods, path.reverse())
     return (
-        <span className="breadCrumb">
+        <span className="breadCrumb" onClick={() => setReady(false)}>
             <b>/</b>
             <span
                 onClick={() => deselectChildren(name)}

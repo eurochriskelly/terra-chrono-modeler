@@ -9,11 +9,12 @@ import { getTimespan, periods } from './lib/geological-time-chart';
 
 import './EpochFinder.css'
 
-function EpochFinder({ width}) {
+function EpochFinder({ width }) {
     const [selectedEon, setSelectedEon] = useState(null);
     const [selectedEra, setSelectedEra] = useState(null);
     const [selectedPeriod, setSelectedPeriod] = useState(null);
     const [selectedEpoch, setSelectedEpoch] = useState(null);
+    const [ready, setReady] = useState(false);
     const selections = {
         selectedEon, selectedEra, selectedPeriod, selectedEpoch,
         setSelectedEon, setSelectedEra, setSelectedPeriod, setSelectedEpoch
@@ -41,24 +42,27 @@ function EpochFinder({ width}) {
                     <BreadCrumb
                         name='eon' selected={selectedEon}
                         selections={selections}
+                        setReady={setReady}
                     />
                     <BreadCrumb
                         name='era' selected={selectedEra}
                         selections={selections}
+                        setReady={setReady}
                     />
                     <BreadCrumb
                         name='period' selected={selectedPeriod}
                         selections={selections}
+                        setReady={setReady}
                     />
                     <BreadCrumb
                         name='epoch' selected={selectedEpoch}
                         selections={selections}
+                        setReady={setReady}
                     />
                 </div>
-                <PromptNextTimespan selections={selections} />
-
+                <PromptNextTimespan selections={selections} ready={ready} setReady={setReady} />
             </div>
-            <TimePeriodBar periods={periods} selections={selections} width={width} />
+            { ready  ? <div/>: <TimePeriodBar periods={periods} selections={selections} width={width} />  }
             <TimeLine startMa={getStartTime()} endMa={getEndTime()} width={width} />
         </div >
     )
@@ -67,7 +71,7 @@ function EpochFinder({ width}) {
 export default withResizeDetector(EpochFinder);
 
 
-function PromptNextTimespan({ selections }) {
+function PromptNextTimespan({ selections, setReady, ready }) {
     const {
         selectedEon, selectedEra, selectedPeriod, selectedEpoch,
     } = selections
@@ -75,10 +79,17 @@ function PromptNextTimespan({ selections }) {
     const next = getTimespan(periods, sels)
     const SelTimespan = (name) => {
         return (
-            <span className="promptNextTimespan">
-                Select {name} &nbsp;
-                <FontAwesomeIcon icon={faHandPointDown} />
-            </span>
+            <div>
+                <span className="promptNextTimespan">
+                    Select {name} &nbsp;
+                    <FontAwesomeIcon icon={faHandPointDown} />
+                </span>
+                <button onClick={() => {
+                    console.log(ready)
+                    setReady(true)
+                    console.log(ready)
+                }}>DONE</button>
+            </div>
         )
     }
     if (next && next.children && next.children.length > 0) {

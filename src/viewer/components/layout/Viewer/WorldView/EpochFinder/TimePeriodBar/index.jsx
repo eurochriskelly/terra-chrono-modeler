@@ -5,7 +5,7 @@ import { getTimespans, getTotalDuration, setupPositions } from '../lib/positioni
 
 const ii = logMaker('TimePeriodBar', 'ii')
 
-function TimePeriodBar({ periods, selections, width = 800}) {
+function TimePeriodBar({ periods, selections, width = 800 }) {
     const {
         selectedEon, selectedEra, selectedPeriod, selectedEpoch,
         setSelectedEon, setSelectedEra, setSelectedPeriod, setSelectedEpoch

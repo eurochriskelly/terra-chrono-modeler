@@ -18,12 +18,11 @@
 			"name": "TCC",
 			"path": "../terra-chrono-cmd"
 		},
-		/*
-		{
-			"name": "Viewer",
-			"path": "./src/viewer"
+				{
+			"name": "TCM",
+			"path": "."
 		},
-		*/
+
 	],
 	"settings": {
 		"terminal.integrated.fontSize": 10,
