@@ -6,10 +6,12 @@ import TimePeriodBar from './TimePeriodBar';
 import BreadCrumb from './BreadCrumb';
 import { TimeLine } from '../../../../base/Time';
 import { getTimespan, periods } from './lib/geological-time-chart';
+import { Planet } from '../../../../base/Icon';
 
 import './EpochFinder.css'
 
-function EpochFinder({ width }) {
+function EpochFinder({ width, epochs }) {
+    console.log('epochs', epochs)
     const [selectedEon, setSelectedEon] = useState(null);
     const [selectedEra, setSelectedEra] = useState(null);
     const [selectedPeriod, setSelectedPeriod] = useState(null);
@@ -20,20 +22,35 @@ function EpochFinder({ width }) {
         setSelectedEon, setSelectedEra, setSelectedPeriod, setSelectedEpoch
     }
 
-    const getStartTime = () => {
-        const sels = [selectedEon, selectedEra, selectedPeriod, selectedEpoch].filter(x => x)
-        if (sels.length) {
-            return getTimespan(periods,sels)?.start
+    const EmbedTimeline = () => {
+        const getStartTime = () => {
+            const sels = [selectedEon, selectedEra, selectedPeriod, selectedEpoch].filter(x => x)
+            if (sels.length) {
+                return getTimespan(periods,sels)?.start
+            }
+            return 540
         }
-        return 540
-    }
-    const getEndTime = () => {
-        const sels = [selectedEon, selectedEra, selectedPeriod, selectedEpoch].filter(x => x)
-        if (sels.length) {
-            return getTimespan(periods,sels)?.end
+        const getEndTime = () => {
+            const sels = [selectedEon, selectedEra, selectedPeriod, selectedEpoch].filter(x => x)
+            if (sels.length) {
+                return getTimespan(periods,sels)?.end
+            }
+            return 0
         }
-        return 0
+        const endTime = getEndTime()
+        const startTime = getStartTime()
+        return (
+            <TimeLine startMa={startTime} endMa={endTime} width={width}>{
+                epochs.map(({ id, name, mya, radius }) => {
+                    return (
+                        <Planet key={id} xPos={mya} yPos={18} radius={radius/1000*1.8} />
+                    )
+                })
+            }</TimeLine>
+        )
     }
+
+
     return (
         <div id="epochFinder">
             <div className="pathFinder">
@@ -63,7 +80,7 @@ function EpochFinder({ width }) {
                 <PromptNextTimespan selections={selections} ready={ready} setReady={setReady} />
             </div>
             { ready  ? <div/>: <TimePeriodBar periods={periods} selections={selections} width={width} />  }
-            <TimeLine startMa={getStartTime()} endMa={getEndTime()} width={width} />
+            <EmbedTimeline />
         </div >
     )
 }
@@ -84,11 +101,7 @@ function PromptNextTimespan({ selections, setReady, ready }) {
                     Select {name} &nbsp;
                     <FontAwesomeIcon icon={faHandPointDown} />
                 </span>
-                <button onClick={() => {
-                    console.log(ready)
-                    setReady(true)
-                    console.log(ready)
-                }}>DONE</button>
+                <button onClick={() => setReady(true)}>DONE</button>
             </div>
         )
     }

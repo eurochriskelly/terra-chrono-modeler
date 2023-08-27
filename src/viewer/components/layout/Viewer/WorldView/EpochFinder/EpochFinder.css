@@ -6,7 +6,7 @@
     display: grid;
     user-select: none;
     height: 100%;
-    grid-template-rows: 30px auto 40px;
+    grid-template-rows: 30px auto 50px;
     margin: 0;
     padding: 0;
 

@@ -3,7 +3,8 @@
 }
 
 .drillDownList {
-    border-top: 5px solid #010101;;
+    border-top: 5px solid #010101;
+    ;
 
 }
 
@@ -16,7 +17,8 @@
 }
 
 .examine {
-    background: #cacaca78;
+    background: #672d2d78;
+    border-color: #020101;
     margin: 0;
     display: grid;
     grid-template-columns: 4px auto;

@@ -66,7 +66,7 @@ const TimeLine = ({ startMa, endMa, width, children }) => {
                             x1={position}
                             y1={height}
                             x2={position}
-                            y2={0}
+                            y2={-6}
                             style={style}
                         />
                     ))}
