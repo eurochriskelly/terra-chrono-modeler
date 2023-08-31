@@ -1,8 +1,11 @@
 # About
 
-# Prerequisites
+## Prerequisites
 
-- nodejs and npm
+Mandatory tooling:
+- nodejs
+- npm
+
 
 # Getting started
 
