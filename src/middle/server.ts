@@ -1,14 +1,9 @@
+// Test
+
 import express from 'express';
 import cors from 'cors';
-import axios from 'axios';
-import AxiosDigestAuth from '@mhoc/axios-digest-auth';
 import { httpPut, httpDelete, httpEval } from './curler.js';
 import { settings } from '../../config/environment.js';
-
-const digestAuth = new AxiosDigestAuth.default({
-    username: 'admin',
-    password: 'admin', // Replace with your username and password
-});
 
 const app = express();
 const port = 3000;

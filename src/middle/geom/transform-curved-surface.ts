@@ -1,5 +1,5 @@
 import Delaunator from 'delaunator'
-import { booleanPointInPolygon } from '@turf/boolean-point-in-polygon'
+import turf, { booleanPointInPolygon, randomPoint, bbox } from '@turf/turf'
 // const proj4 = require('proj4') // if you opt for coordinate transformation
 
 

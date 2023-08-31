@@ -11,4 +11,7 @@ export default {
         },
     },
     plugins: [react()],
+    optimizeDeps: {
+        exclude: [ 'src/middle', 'config']
+    },
 }

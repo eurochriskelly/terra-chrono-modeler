@@ -6,7 +6,6 @@ Mandatory tooling:
 - nodejs
 - npm
 
-
 # Getting started
 
 Install the dependencies
