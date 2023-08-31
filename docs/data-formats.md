@@ -15,7 +15,7 @@ Typically generated data will be stored in the following URI format:
 /tcm/feature/{feature_name}/epoch/{epoch_name}/curated/region.json
 /tcm/feature/{feature_name}/epoch/{epoch_name}/curated/region/feature-1.json
 
-Data will be divided between /generated/ and /curated/ data.
+Data will be divided between /generated data/ and /curated data/.
 
 - Generated data
 
@@ -26,9 +26,11 @@ Data will be divided between /generated/ and /curated/ data.
 
 Typical URI's will look like:
 /tcm/feature/{feature_name}/radius/5020/generated/region.json
-/tcm/feature/{feature_name}/radisu/5020//generated/region/feature-1.json
+/tcm/feature/{feature_name}/radisu/5020/generated/region/feature-1.json
 /tcm/feature/{feature_name}/radius/5030/generated/region.json
-/tcm/feature/{feature_name}/radisu/5030//generated/region/feature-1.json etc..
+/tcm/feature/{feature_name}/radisu/5030/generated/region/feature-1.json
+
+etc..
 
 - Curated data
 

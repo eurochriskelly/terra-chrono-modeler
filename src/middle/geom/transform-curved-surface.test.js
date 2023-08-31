@@ -1,8 +1,7 @@
 import { transformCurvedSurface } from './transform-curved-surface.js';
 
-
 /**
- * Test by transforming simplfied continent from 6000 to 4000
+ * Test by transforming simplfied continent from 6000 to 5500
  * in 100 Ma steps.
  */
 describe('transformCurvedSurface', () => {
@@ -10,6 +9,7 @@ describe('transformCurvedSurface', () => {
         const surface = {
             // todo: create geojson surface object
         }
-        transformCurvedSurface(surface, 6000, 5900)
+        const triangles = transformCurvedSurface(surface, 6000, 5900)
+        console.log(triangles)
     })
 })
