@@ -1,5 +1,5 @@
-const { booleanPointInPolygon } = require('@turf/turf')
-const Delaunator = require('delaunator')
+import Delaunator from 'delaunator'
+import { booleanPointInPolygon } from '@turf/boolean-point-in-polygon'
 // const proj4 = require('proj4') // if you opt for coordinate transformation
 
 
@@ -18,7 +18,6 @@ const addSteinerPoints = (regionBoundary, numberOfPoints = 100) => {
     }
     return steinerPoints;
 }
-
 
 const boundaryToMesh = (regionBoundary) => {
     // Add Steiner Points to smooth the surface
