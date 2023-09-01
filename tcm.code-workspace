@@ -1,11 +1,17 @@
 {
 	"folders": [
 		/*
+		*/
 		{
 			"name": "main",
 			"path": "./"
 		},
-		*/
+
+		{
+			"name": "middle",
+			"path": "./src/middle"
+		},
+		/*
 		{
 			"name": "focus",
 			"path": "./src/viewer/components/layout/Viewer"
@@ -22,7 +28,7 @@
 			"name": "TCM",
 			"path": "."
 		},
-
+		*/
 	],
 	"settings": {
 		"terminal.integrated.fontSize": 10,
@@ -70,8 +76,8 @@
 		"files.trimTrailingWhitespace": true,
 		"files.insertFinalNewline": true,
 		"files.trimFinalNewlines": true,
-		"files.autoSave": "afterDelay",
-		"files.autoSaveDelay": 1000,
+		//"files.autoSave": "afterDelay",
+		// "files.autoSaveDelay": 1000,
 		"files.associations": {
 			"*.xqy": "xquery",
 			"*.js": "javascript",

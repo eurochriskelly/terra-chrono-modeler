@@ -1,4 +1,5 @@
-import { transformCurvedSurface } from './transform-curved-surface.js';
+const ttt = require('@turf/turf')
+import { transformCurvedSurface } from './transform-curved-surface';
 
 /**
  * Test by transforming simplfied continent from 6000 to 5500
@@ -12,8 +13,8 @@ describe('transformCurvedSurface', () => {
                 "uri": "/gegeodesy/epoch/e2/layer/test/20230809161959.797.json"
             },
             "geometry": {
-                "type": "LineString",
-                "coordinates": [
+                "type": "Polygon",
+                "coordinates": [[
                     [-50.877686, 68.866819],
                     [-50.910645, 68.552092],
                     [-51.454468, 68.297671],
@@ -28,10 +29,10 @@ describe('transformCurvedSurface', () => {
                     [-45.329591, 60.241952],
                     [-42.615968, 60.316897],
                     [-41.912843, 62.462236]
-                ]
+                ]]
             }
         }
-        const triangles = transformCurvedSurface(surface, 6000, 5900)
+        const triangles = transformCurvedSurface(surface.geometry.coordinates, 6000, 5900)
         console.log(triangles)
     })
 })
