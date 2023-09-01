@@ -1,10 +1,8 @@
 export default {
-  transform: {
-    "^.+\\.ts$": "babel-jest",
-    "^.+\\.hs$": "babel-jest",
-    "^.+\\.[jt]sx?$": "babel-jest"
-  },
+  preset: 'ts-jest',
+  testEnvironment: 'node',
   moduleFileExtensions: ["js", "jsx", "json", "ts", "tsx"],
   testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-  testEnvironment: 'jest-environment-node',
+  testPathIgnorePatterns: ["/dist/", "/node_modules/"],
+  rootDir: "src",
 };
