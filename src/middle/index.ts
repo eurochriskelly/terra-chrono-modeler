@@ -1,9 +1,11 @@
 import { transformCurvedSurface } from './geom/transform-curved-surface.js'
+import { transformBoundary } from './geom/transform-boundary.js'
 
 const surface = {
     "type": "Feature",
     "properties": {
-        "uri": "/gegeodesy/epoch/e2/layer/test/20230809161959.797.json"
+        "uri": "/gegeodesy/epoch/e2/layer/test/20230809161959.797.json",
+        "radius": 6000
     },
     "geometry": {
         "type": "Polygon",
@@ -26,6 +28,28 @@ const surface = {
         ]]
     }
 }
-const triangles = transformCurvedSurface(surface, 6000, 5900)
-console.log(triangles.area)
-console.log(triangles.data.slice(0, 10))
+
+const test = 2
+
+switch (test) {
+    case 1:
+        {
+            const triangles = transformCurvedSurface(surface, 6000, 5900)
+            console.log(triangles.area)
+            console.log(triangles.data.slice(0, 10))
+        }
+        break
+    case 2:
+        {
+            const results = []
+            const startAt = 6000
+            for (let mya = 6000; mya > 4000; mya -= 1) {
+                const result = transformBoundary(surface, startAt, mya)
+                result.mya = mya
+                results.push(result)
+            }
+            console.log(JSON.stringify(results).length/1000)
+        }
+        break
+    default: break
+}
