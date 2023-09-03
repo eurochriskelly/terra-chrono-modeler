@@ -47,10 +47,10 @@
     padding: 1px 3px;
 }
 
-
 .drillDownList .listItem {
     display: grid;
     grid-template-columns: 40px auto 13px 40px;
+    color: #bbb;
 }
 
 .drillDownList .listItem .color {
@@ -79,17 +79,20 @@
     /* show in center */
     color: #888;
     padding: 3px 0;
-
 }
 
 .drillDownList .allowAdd:hover .fa-plus {
     color: #000;
 }
 
+.drillDownList {
+    color: #ccc;
+}
+
 .drillDownList .active {
-    color: white;
-    background-color: #7c7c7c;
+    color: rgb(0 117 255);
     font-weight: bold;
+    letter-spacing: 0.05em;
 }
 
 

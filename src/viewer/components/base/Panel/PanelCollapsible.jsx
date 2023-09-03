@@ -10,14 +10,8 @@ function PanelCollapsible(props) {
 
     let styles = {};
     let buttonStyles = {
-        position: "absolute",
-        height: "20px",
-        width: "32px",
-        fontWeight: "bold",
-        fontSize: "1.3em",
-        top: 0,
         right: 0,
-        color: '#777'
+
     };
 
     const { id, direction = "west", debug, minSize = "20", fullSize = "250" } = props;

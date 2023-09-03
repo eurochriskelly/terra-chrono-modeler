@@ -8,28 +8,42 @@ import { PanelCollapsible, PanelSection } from '../../base/Panel'
 import './Sidebar.css'
 
 function Sidebar(props) {
-    const { mode } = props
+    const { mode } = props.gestate
+
+    // define the panels and their content per view
+    const panels = [
+        {
+            title: 'mode',
+            icon: 'earth',
+            content: <ModeSwitcher {...props} />
+        },
+        {
+            title: 'Epoch',
+            content: <EpochSelector {...props} />
+        },
+        {
+            title: 'underlays',
+            condition: mode === 'flat',
+            content: <Backdrops {...props} />
+        },
+        {
+            title: 'layers',
+            content: <LayerManager {...props} />
+        }
+    ]
+
     return (
-        <PanelCollapsible id="sidebar" debug={true}>
-
-
-            <PanelSection title="mode" icon="earth">
-                <ModeSwitcher {...props} />
-            </PanelSection>
-
-            <PanelSection title="Epoch">
-                <EpochSelector {...props} />
-            </PanelSection>
-
-            <PanelSection title="underlays">
-                <Backdrops {...props} />
-            </PanelSection>
-
-            <PanelSection title="layers">
-                <LayerManager {...props} />
-            </PanelSection>
-
-        </PanelCollapsible>
+        <PanelCollapsible id="sidebar" debug={true}>{
+            panels.map((panel, i) => {
+                const { condition = true } = panel
+                return (
+                    condition &&
+                    <PanelSection key={i} title={panel.title} icon={panel.icon} >
+                        {panel.content}
+                    </PanelSection>
+                )
+            })
+        }</PanelCollapsible>
     )
 }
 
