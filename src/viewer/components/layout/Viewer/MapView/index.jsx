@@ -4,6 +4,8 @@ import '@geoman-io/leaflet-geoman-free';
 import { bus } from "../../../../classes/event-bus";
 import GEState from "../../../../classes/ge-state";
 
+import "./MapView.css";
+
 var GES = {};
 const layerToFeature = new Map();
 
@@ -57,7 +59,6 @@ function MapView(props) {
     const showProps = (e) => {
         console.log('props', props)
     }
-
     return <div id="map" onClick={showProps}></div>;
 }
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import GEState from './classes/ge-state'
 import { logMaker } from './common/logging'
-import { CommandHandler } from './classes/command-handler'
+// import { CommandHandler } from './classes/command-handler'
 
 import Sidebar from './components/layout/Sidebar'
 import Viewer from './components/layout/Viewer'
@@ -53,6 +53,11 @@ function App() {
             console.log(newEpochs)
             setEpochs(newEpochs)
             GES.syncData({ epochs: newEpochs })
+        },
+        handleModeChange: (mode) => {
+            ii('handleModeChange', mode);
+            console.log('GESTATE', GES.gestate)
+            setGestate({...GES.gestate, mode: mode })
         },
         handleAddLayer: (layer) => {
             ii('handleAddLayer', layer);

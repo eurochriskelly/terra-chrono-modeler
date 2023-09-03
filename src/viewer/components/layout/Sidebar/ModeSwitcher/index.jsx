@@ -2,15 +2,24 @@
 //
 import React from "react";
 
-function ModeSwitcher(props) {
-    const { layers = [], handleAddLayer } = props
-    // Make the list unique
-    const sortByName = (a, b) => a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+import "./ModeSwitcher.css";
 
+function ModeSwitcher(props) {
+    const { handleModeChange } = props
+    const { mode } = props.gestate
+    console.log('ModeSwitcher', mode)
     return (
         <div id="modeSwitcher">
-            <div>FIRST</div>
-            <div>LAST</div>
+            <span>
+                <input type="radio" id="flat" name="mode"
+                    value="flat" checked={mode === 'flat'}
+                    onChange={() => props.handleModeChange('flat')} />
+                <label htmlFor="flat">Map</label>
+            </span>
+            <span>
+                <input type="radio" id="world" name="mode" value="world" checked={mode === 'world'} onChange={() => props.handleModeChange('world')} />
+                <label htmlFor="world">World</label>
+            </span>
         </div>
     )
 }

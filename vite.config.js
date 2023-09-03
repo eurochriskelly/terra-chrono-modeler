@@ -1,25 +1,20 @@
 // vite.config.js
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-export default defineConfig({
-    plugins: [react()],
-    build: {
-        rollupOptions: {
-            // Define entry point for the frontend code
-            input: 'src/viewer/index.html'
-        }
-    },
+export default {
     server: {
-        // You can specify server options here
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+                changeOrigin: true,
+            },
+        },
     },
+    plugins: [react()],
     resolve: {
         alias: {
-            // Add your alias here
-        }
+            '@': '/src',
+        },
+        extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],
     },
-    esbuild: {
-        jsxFactory: 'React.createElement',
-        jsxInject: `import React from 'react'`,
-    }
-});
+};

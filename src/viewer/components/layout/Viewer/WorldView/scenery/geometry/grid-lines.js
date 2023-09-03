@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 
-const getStyle = major => major
-    ? { color: 0x777777, opacity: 0.2, transparent: true }
-    : { color: 0xaaaaaa, opacity: 0.7, transparent: true }
+const majorMaterial = new THREE.LineBasicMaterial({ color: 0x777777, opacity: 0.2, transparent: true })
+const minorMaterial = new THREE.LineBasicMaterial({ color: 0xaaaaaa, opacity: 0.7, transparent: true })
+const getStyle = major => major ? majorMaterial : minorMaterial
 
 export const generateGridLines = ({ radius = 6371 }) => {
     const lines = new THREE.Group();
@@ -26,8 +26,7 @@ export const generateGridLines = ({ radius = 6371 }) => {
         path.rotateX(Math.PI / 2);  // Rotate to make the circle horizontal
         path.translate(0, radius * Math.sin(phi), 0);  // Adjust the Y position based on latitude
 
-        const style = getStyle(!!lat);
-        const material = new THREE.LineBasicMaterial(style);
+        const material = getStyle(!!lat);
         lines.add(new THREE.LineLoop(path, material));
     }
 
@@ -45,8 +44,7 @@ export const generateGridLines = ({ radius = 6371 }) => {
             vertices.push(x, y, z);
         }
         geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-        const style = getStyle(!!lon)
-        const material = new THREE.LineBasicMaterial(style);
+        const material  = getStyle(!!lon)
         lines.add(new THREE.Line(geometry, material));
     }
 
