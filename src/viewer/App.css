@@ -15,7 +15,7 @@ body {
     display: grid;
     margin: 0;
     padding: 0;
-    grid-template-columns: 200px auto;
+    grid-template-columns: 250px auto;
     /* 200px for 'a', 1fr for 'b' */
     grid-template-rows: auto 200px;
     /* 1fr for 'b', 200px for 'c' */

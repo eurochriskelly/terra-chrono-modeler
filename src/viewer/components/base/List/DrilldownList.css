@@ -2,12 +2,6 @@
     background-color: #ae986a4a;
 }
 
-.drillDownList {
-    border-top: 5px solid #010101;
-    ;
-
-}
-
 .drillDownList input[type="checkbox"] {
     margin: 2px 8px 2px 3px;
 }
@@ -17,7 +11,7 @@
 }
 
 .examine {
-    background: #672d2d78;
+    background: black;
     border-color: #020101;
     margin: 0;
     display: grid;
@@ -56,14 +50,14 @@
 
 .drillDownList .listItem {
     display: grid;
-    grid-template-columns: 40px auto 30px 40px;
+    grid-template-columns: 40px auto 13px 40px;
 }
 
 .drillDownList .listItem .color {
-    width: 18px;
-    height: 18px;
+    width: 12px;
+    height: 12px;
     margin: 2px;
-    border: 2px solid white;
+    border: 1px solid white;
 }
 
 .drillDownList .allowAdd {

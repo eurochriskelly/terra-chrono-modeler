@@ -11,7 +11,8 @@ function Sidebar(props) {
     const { mode } = props
     return (
         <PanelCollapsible id="sidebar" debug={true}>
-            <div style={{ minHeight: '24px', backgroundColor: '#222' }}></div>
+
+
             <PanelSection title="mode" icon="earth">
                 <ModeSwitcher {...props} />
             </PanelSection>
