@@ -6,12 +6,14 @@
     background-color: #121212;
     color: #bbb;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 0;
+    padding-bottom: 2px;
 }
 
 .panel-section__title {
+    background-color: black;
     color: #777;
     margin: 0;
-    margin-left: 0.2em;
     font-size: 0.8em;
     margin-bottom: 1.0em;
     font-weight: normal;
@@ -21,19 +23,44 @@
     display: grid;
     text-align: right;
     grid-template-columns: 10px auto 5px 16px 16px;
+    margin-left: 4px;
 }
 
 .panel-section__title .label {
-    text-align: right;
+    text-align: left;
+    margin-left: 10px;
 }
 
 .panel-section .decor {
     color: #444;
-    font-size: 0.8em;
-    margin-left: 2px;
+    font-size: 1em;
+    margin: 2px;
+
 }
 
 .panel-section .decor:hover {
     color: white;
     cursor: pointer;
+}
+
+.panel-section .overlay-window {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #00000055;
+}
+
+.panel-section .overlay-window>div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    color: #bbb;
+    padding: 1em;
+    border: 2px outset #333;
+    border-radius: 5px;
+    width: 50%;
+    height: 50%;
+    overflow: auto;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faBars, faWindowMaximize,
@@ -7,7 +7,12 @@ import {
 
 import './PanelSection.css'
 
+var fv = false;
+
 function PanelSection(props) {
+
+    const [fullView, setFullView] = useState(false);
+
     const {
         title,
         children,
@@ -22,6 +27,12 @@ function PanelSection(props) {
             var useIcon = faBars;
     }
 
+    const maximizeDisplay = () => {
+        console.log('maximizeDisplay')
+        setFullView(!fv)
+        fv = !fv
+    }
+
     return (
         <div className="panel-section group">
             <h2 className="panel-section__title">
@@ -33,12 +44,23 @@ function PanelSection(props) {
                 <span className="decor">
                     <FontAwesomeIcon icon={faWindowMinimize} />
                 </span>
-                <span className="decor">
+                <span className="decor" onClick={maximizeDisplay}>
                     <FontAwesomeIcon icon={faWindowMaximize} />
                 </span>
-
             </h2>
-            <div className="panel-section__content">{children}</div>
+            { fullView
+                    ? <div className="panel-section__content"></div>
+                    : <div className="panel-section__content">{children}</div>
+            }
+            {fullView && (
+                <div className="overlay-window">
+                    <div>foo</div>
+                    <div >
+                        <div className="panel-section__full">deebly</div>
+                    </div>
+                </div>
+                )
+            }
         </div>
     )
 }
