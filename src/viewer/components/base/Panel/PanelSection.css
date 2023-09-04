@@ -9,13 +9,31 @@
 }
 
 .panel-section__title {
-    color: #999;
+    color: #777;
     margin: 0;
     margin-left: 0.2em;
     font-size: 0.8em;
-    margin-bottom: 1.2em;
+    margin-bottom: 1.0em;
     font-weight: normal;
     text-transform: uppercase;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     letter-spacing: 0.1em;
+    display: grid;
+    text-align: right;
+    grid-template-columns: 10px auto 5px 16px 16px;
+}
+
+.panel-section__title .label {
+    text-align: right;
+}
+
+.panel-section .decor {
+    color: #444;
+    font-size: 0.8em;
+    margin-left: 2px;
+}
+
+.panel-section .decor:hover {
+    color: white;
+    cursor: pointer;
 }

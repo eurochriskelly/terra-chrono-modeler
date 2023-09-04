@@ -100,6 +100,10 @@
     display: none;
 }
 
+.drillDownList .cant-activate {
+    color: black;
+}
+
 .drillDownList .selected .activate {
     display: inline-block;
     color: #b6ad99;

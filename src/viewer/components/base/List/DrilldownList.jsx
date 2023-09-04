@@ -69,7 +69,7 @@ function DrilldownList(props) {
                                     ? <span className="color" style={{ backgroundColor: color }} />
                                     : <span />
                                 }
-                                {selected && active && (
+                                {(selected && active) && (
                                     <span className="activate" onClick={handleActivateItem}>
                                         <FontAwesomeIcon icon={faCrosshairs} />
                                     </span>
