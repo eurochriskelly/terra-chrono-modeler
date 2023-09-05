@@ -28,3 +28,5 @@ _superseded/
 _index.html
 
 src/viewer/*.code-workspace
+
+public/images/

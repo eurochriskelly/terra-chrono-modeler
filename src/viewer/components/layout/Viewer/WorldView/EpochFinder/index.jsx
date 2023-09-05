@@ -43,7 +43,7 @@ function EpochFinder({ width, epochs }) {
             <TimeLine startMa={startTime} endMa={endTime} width={width}>{
                 epochs.map(({ id, name, mya, radius }) => {
                     return (
-                        <Planet key={id} xPos={mya} yPos={18} radius={radius/1000*1.8} />
+                        <Planet key={id} xPos={mya||0} yPos={18} radius={radius/1000*1.8} />
                     )
                 })
             }</TimeLine>
