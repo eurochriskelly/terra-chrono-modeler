@@ -98,10 +98,11 @@ export class DataSync extends DataSyncPlumbing {
 
         console.log('state', state)
         // retrieve state data
-        const [epochs, backdrops, features] = await Promise.all([
+        const [epochs, backdrops, features, collections] = await Promise.all([
             get('getEpochs', { username: 'chris.kelly' }),
             get('getBackdrops', { username: 'chris.kelly', epoch }),
-            get('getFeatures', { epoch })
+            get('getFeatures', { epoch }),
+            get('getCollections', { epoch }),
         ]);
 
         console.log('backdrops', backdrops)
@@ -116,12 +117,12 @@ export class DataSync extends DataSyncPlumbing {
             epochs,
             backdrops,
             features,
+            collections,
         }
         return this.result
     }
 
     async syncData(data) {
-        const { epochs, backdrops, features, layers } = data
         Object.keys(data).forEach(async key => {
             if (data[key]) {
                 await this.save(key, data[key])

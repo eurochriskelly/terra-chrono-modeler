@@ -15,7 +15,7 @@ var EI = new ESceneInteract()
 var EE
 
 const WorldView = (props) => {
-    const { gestate, layers, features, epochs } = props;
+    const { gestate, layers, features, colletions, epochs } = props;
     const { world, settings, mode } = gestate;
 
     const [isEditing, setIsEditing] = useState(false); // New state variable
@@ -55,7 +55,7 @@ const WorldView = (props) => {
             const camera = cameraRef.current
 
 
-            EE.update({ gestate, layers, features, epochs })
+            EE.update({ gestate, layers, features, collections, epochs })
 
             const updateSize = () => {
                 if (mount.current) {
@@ -97,7 +97,7 @@ const WorldView = (props) => {
     // initialize the scene
     useEffect(reactions.initialize, [])
     useEffect(reactions.switchMode, [isEditing])
-    useEffect(reactions.updateScene, [gestate, layers, features, epochs])
+    useEffect(reactions.updateScene, [gestate, layers, features, collections, epochs])
 
     return (
         <div className="worldView" style={{

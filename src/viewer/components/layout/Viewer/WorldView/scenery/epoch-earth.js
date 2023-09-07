@@ -59,11 +59,13 @@ export class EpochEarth extends EpochEarthBase {
         this.sceneInfo = new SceneInfo(scene, world)
     }
 
-    update({ layers, epochs, features, gestate }) {
+    update({ layers, epochs, features, collections, gestate }) {
         // Geometry for the other planet
         this.sceneInfo.updateEpoch(epochs, gestate.epoch)
         this.sceneInfo.updateGlobe()
         this.sceneInfo.updateFeatures(features, layers)
+        // FIXME: do we need layers here or in items?
+        // this.sceneInfo.updateCollections(features, layers)
         this.sceneInfo.updateGrid(layers)
         this.clipView()
     }

@@ -19,6 +19,7 @@ function App() {
     const [backdrops, setBackdrops] = useState([]);
     const [epochs, setEpochs] = useState([]);
     const [features, setFeatures] = useState([]);
+    const [collections, setCollections] = useState([]);
     const [layers, setLayers] = useState([]);
     const [gestate, setGestate] = useState({});
 
@@ -29,6 +30,7 @@ function App() {
             setEpochs(GES.epochs);
             setBackdrops(GES.backdrops);
             setFeatures(GES.features);
+            setCollections(GES.collections);
             setLayers(GES.gestate.layers);
             //new CommandHandler(EFV);
         }
@@ -37,7 +39,7 @@ function App() {
 
     const common = {
         mode: 'flat',
-        backdrops, gestate, epochs, features,
+        backdrops, gestate, epochs, features, collections,
         layers: gestate.layers,
         handleAddEpoch: (epoch) => {
             ii('handleAddEpoch', epoch)
@@ -50,7 +52,6 @@ function App() {
                     mya: 0, radius: EARTH_RADIUS
                 }
             ]
-            console.log(newEpochs)
             setEpochs(newEpochs)
             GES.syncData({ epochs: newEpochs })
         },

@@ -13,6 +13,7 @@ export class SceneInfo {
         this.sphere = null
         this.rings = null
         this.features = null
+        this.collections = null
 
         // stored geometry
         this.regions = []
@@ -56,6 +57,10 @@ export class SceneInfo {
                 }
             }
         */
+    }
+    updateCollections(collections) {
+        // TODO : implement
+        console.log('todo: implement updateCollections')
     }
     updateFeatures(features, layers) {
         // Assuming each epoch has a regions array

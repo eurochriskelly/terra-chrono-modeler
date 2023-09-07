@@ -4,6 +4,7 @@ const docs = {
     initialState: {
         epoch: 'e1',
         layer: 'test',
+        feature: 'f1',
         mode: 'flat',
         zoom: 4,
         settings: [
@@ -22,7 +23,6 @@ const docs = {
 
                 }
             }
-
         ],
         center: [0, 0],
         layers: [
@@ -51,6 +51,11 @@ const docs = {
             RADIUS_EPOCH: 3200,
         }
     },
+    intialFeatures: [
+        { id: 'f1', name: 'African plate' },
+        { id: 'f2', name: 'South American plate' },
+        { id: 'f3', name: 'South Atlantic' },
+    ],
     intialEpochs: [
         { id: 'e1', name: 'present', mya: 0, radius: 6371 },
         { id: 'e2', name: 'early atlantic', mya: 10, radius: 5496 },

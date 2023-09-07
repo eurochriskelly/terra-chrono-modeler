@@ -16,11 +16,11 @@ const data = cts.uriMatch(pattern)
 
 // make the list unique
 const result = {
-    command: 'getFeatures',
+    command: 'getCollections',
     actions: [],
     data,
     args: ARGS,
-    message: `Found [${data.length}] features for epochs [${epoch}]!`
+    message: `Found [${data.length}] collections for epochs [${epoch}]!`
 }
 
 result

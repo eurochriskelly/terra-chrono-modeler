@@ -19,11 +19,12 @@ class GEStateData {
     }
     async intialize() {
         const {
-            state, epochs, backdrops, features
+            state, epochs, backdrops, features, collections,
         } = await this.ds.retrieveData()
         this.gestate = state
         this.backdrops = backdrops
         this.features = features
+        this.collections = collections
         this.epochs = epochs
     }
 };
