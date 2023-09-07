@@ -21,5 +21,6 @@ For storybook, run
 `npm run storybook`
 
 
+# Documentation
 
-
+For more detailed information, see docs folder
