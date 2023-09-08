@@ -3,6 +3,10 @@
 		/*
 		*/
 		{
+			"name": "mgmt",
+			"path": "./mgmt"
+		},
+		{
 			"name": "main",
 			"path": "./"
 		},

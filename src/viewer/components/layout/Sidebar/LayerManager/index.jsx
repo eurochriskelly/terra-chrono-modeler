@@ -19,6 +19,4 @@ function LayerManager(props) {
     )
 }
 
-
-
 export default LayerManager;

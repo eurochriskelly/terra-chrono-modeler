@@ -3,6 +3,7 @@ import Backdrops from './Backdrops'
 import LayerManager from './LayerManager'
 import EpochSelector from './EpochSelector'
 import ModeSwitcher from './ModeSwitcher'
+import CollectionManager from './CollectionManager'
 import { PanelCollapsible, PanelSection } from '../../base/Panel'
 
 import './Sidebar.css'
@@ -29,6 +30,10 @@ function Sidebar(props) {
         {
             title: 'layers',
             content: <LayerManager {...props} />
+        },
+        {
+            title: 'collections',
+            content: <CollectionManager {...props} />
         }
     ]
 

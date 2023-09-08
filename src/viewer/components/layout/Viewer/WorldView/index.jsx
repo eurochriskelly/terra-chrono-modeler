@@ -15,7 +15,7 @@ var EI = new ESceneInteract()
 var EE
 
 const WorldView = (props) => {
-    const { gestate, layers, features, colletions, epochs } = props;
+    const { gestate, layers, features, collections, epochs } = props;
     const { world, settings, mode } = gestate;
 
     const [isEditing, setIsEditing] = useState(false); // New state variable
@@ -40,8 +40,6 @@ const WorldView = (props) => {
         },
         switchMode: () => {
             const scene = sceneRef.current
-            const renderer = renderRef.current
-            const camera = cameraRef.current
             if (!EE) {
                 ii('switchMode: EE not initialized')
                 return

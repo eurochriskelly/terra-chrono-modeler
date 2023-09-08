@@ -30,3 +30,4 @@ _index.html
 src/viewer/*.code-workspace
 
 public/images/
+mgmt/

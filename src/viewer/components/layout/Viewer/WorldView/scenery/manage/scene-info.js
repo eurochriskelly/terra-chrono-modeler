@@ -80,7 +80,12 @@ export class SceneInfo {
                     this.featureGroup.add(r.group)
                 })
             this.scene.add(this.featureGroup)
-            ii(`Generated total [${GSurfaceFeature.numPointsGenerated}] points in mode [${GSurfaceFeature.interpolate ? 'interpolate' : 'no-interpolate'}]`)
+            const { numPointsGenerated, interpolate } = GSurfaceFeature
+            ii([
+                `Generated total [${numPointsGenerated}]`,
+                `points in mode`,
+                `[${interpolate ? '' : 'no-'}interpolate]`
+            ].join(' '))
             GSurfaceFeature.numPointsGenerated = 0
             this.scene.printSceneStats()
         }
