@@ -31,3 +31,5 @@ src/viewer/*.code-workspace
 
 public/images/
 mgmt/
+environment.ts
+environment.js
