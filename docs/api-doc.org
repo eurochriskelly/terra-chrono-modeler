@@ -1,0 +1,47 @@
+* Surface features API
+
+  Mandatory parameters have asterisk before
+
+** data/v1 API
+
+| Method | endpoint                      | parameters             | body           | Response                | Notes                                   |
+|--------+-------------------------------+------------------------+----------------+-------------------------+-----------------------------------------|
+| GET    | features                      | layer: Filter by layer |                | list of ids             |                                         |
+|        |                               | limit: default 10      |                |                         |                                         |
+|        |                               | radius: number         |                |                         |                                         |
+|        |                               | mode: [<ids>/full]     |                | if full, return objects |                                         |
+| GET    | features/{ID}                 |                        |                | feature with that id    |                                         |
+| POST   | features                      | *radius:               | geojson array  | ids created             | If uris are provided they will be used  |
+| PUT    | features/{ID}                 |                        | geojson object |                         | update object                           |
+| DELETE | features                      | layer                  |                |                         |                                         |
+|        |                               | radius                 |                |                         |                                         |
+|--------+-------------------------------+------------------------+----------------+-------------------------+-----------------------------------------|
+| GET    | collections                   | radius: number         |                | list of ids             |                                         |
+|        |                               | limit: default 10      |                |                         |                                         |
+|        |                               | mode: [<ids>/full]     |                | if full, return objects |                                         |
+| GET    | collections/{ID}              |                        |                | collecton object        |                                         |
+| GET    | collections/{ID}/tranform     | newRadius: number      |                | transformed object      |                                         |
+| PUT    | collections/{ID}/feature/{ID} |                        | none           |                         | link feature with id to this collection |
+| POST   | collections                   | name                   | none           |                         |                                         |
+|        |                               | radius                 |                |                         |                                         |
+| DELETE | collections/{ID}              |                        |                |                         |                                         |
+|--------+-------------------------------+------------------------+----------------+-------------------------+-----------------------------------------|
+|        |                               |                        |                |                         |                                         |
+
+** Command line interface
+
+To use the above commands using the cli in the gui, follow these rules:
+
+Instead of methods, use CRUD names followed by colon. e.g.
+
+*** GET features?layer=l1
+
+user should type "features" in command area to start features command
+
+Command: features 
+Options [(n)ew/(l)oad/(e)dit/(d)elete]: l
+load features from databass
+Options [(l)ayer/(r)adius]: 
+
+
+

@@ -1,0 +1,184 @@
+openapi: "3.0.0"
+info:
+  title: "Data/V1 API"
+  version: "1.0.0"
+paths:
+  /data/v1/features:
+    get:
+      summary: "Retrieve list of feature IDs"
+      parameters:
+        - name: "layer"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "limit"
+          in: "query"
+          schema:
+            type: "integer"
+            default: 10
+        - name: "radius"
+          in: "query"
+          schema:
+            type: "integer"
+        - name: "mode"
+          in: "query"
+          schema:
+            type: "string"
+            enum: ["ids", "full"]
+      responses:
+        '200':
+          description: "Successfully retrieved features"
+    post:
+      summary: "Create features"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "array"
+              items:
+                type: "string" # Replace with actual GeoJSON schema
+      responses:
+        '201':
+          description: "Successfully created features"
+    put:
+      summary: "Update feature by ID"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object" # Replace with actual GeoJSON schema
+      responses:
+        '200':
+          description: "Successfully updated feature"
+    delete:
+      summary: "Delete features"
+      parameters:
+        - name: "layer"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "radius"
+          in: "query"
+          schema:
+            type: "integer"
+      responses:
+        '204':
+          description: "Successfully deleted features"
+  /data/v1/features/{ID}:
+    get:
+      summary: "Retrieve feature by ID"
+      parameters:
+        - name: "ID"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        '200':
+          description: "Successfully retrieved feature"
+    put:
+      summary: "Update feature by ID"
+      parameters:
+        - name: "ID"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object" # Replace with actual GeoJSON schema
+      responses:
+        '200':
+          description: "Successfully updated feature"
+  /data/v1/collections:
+    get:
+      summary: "Retrieve collections"
+      parameters:
+        - name: "radius"
+          in: "query"
+          schema:
+            type: "integer"
+        - name: "limit"
+          in: "query"
+          schema:
+            type: "integer"
+            default: 10
+        - name: "mode"
+          in: "query"
+          schema:
+            type: "string"
+            enum: ["ids", "full"]
+      responses:
+        '200':
+          description: "Successfully retrieved collections"
+    post:
+      summary: "Create collection"
+      parameters:
+        - name: "name"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "radius"
+          in: "query"
+          schema:
+            type: "integer"
+      responses:
+        '201':
+          description: "Successfully created collection"
+  /data/v1/collections/{ID}:
+    get:
+      summary: "Retrieve collection by ID"
+      parameters:
+        - name: "ID"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        '200':
+          description: "Successfully retrieved collection"
+    delete:
+      summary: "Delete collection by ID"
+      parameters:
+        - name: "ID"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        '204':
+          description: "Successfully deleted collection"
+  /data/v1/collections/{ID}/transform:
+    get:
+      summary: "Transform collection"
+      parameters:
+        - name: "ID"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+        - name: "newRadius"
+          in: "query"
+          schema:
+            type: "integer"
+      responses:
+        '200':
+          description: "Successfully transformed collection"
+  /data/v1/collections/{ID}/feature/{ID}:
+    put:
+      summary: "Link feature to collection"
+      parameters:
+        - name: "ID"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        '200':
+          description: "Successfully linked feature to collection"
+<
