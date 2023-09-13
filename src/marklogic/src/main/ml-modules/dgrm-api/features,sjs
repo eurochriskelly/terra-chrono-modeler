@@ -1,11 +1,16 @@
 // This is how a GET function works ...
+const UriMaker = new require('/uri-maker.sjs')
+
 const get = ({
     layer,
     limit,
     radius,
-    mode,
+    mode = 'ids',
 }) => {
-    
+    const UM = new UriMaker({  layer, radius, type: 'feature' })
+
+    this.matchingUris = UM.getMatchingUris()
+
 }
 
 module.exports = {
