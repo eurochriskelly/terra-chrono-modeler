@@ -1,0 +1,13 @@
+// This is how a GET function works ...
+const get = ({
+    layer,
+    limit,
+    radius,
+    mode,
+}) => {
+    
+}
+
+module.exports = {
+    get
+}
