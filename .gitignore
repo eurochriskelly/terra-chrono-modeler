@@ -1,5 +1,5 @@
-# Logs
-logs
+># Logs
+>logs
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -33,3 +33,8 @@ public/images/
 mgmt/
 environment.ts
 environment.js
+
+# this is genereated by the build 
+.gradle/
+
+src/marklogic/build
