@@ -1,4 +1,4 @@
 export const settings = {
-    mlHostname: '10.0.0.75',
-    mlPort: '8000',
+    mlHostname: '127.0.0.1',
+    mlPort: '9001',
 }
