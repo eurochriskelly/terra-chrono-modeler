@@ -1,1 +1,1 @@
-module.exports = require('/ext/dgrm-api/lib/api.sjs')('features')
+module.exports = require('/ext/dgrm-api/lib/api.sjs')('collections')

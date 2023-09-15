@@ -1,0 +1,103 @@
+{
+	"folders": [
+		/*
+		*/
+		{
+			"name": "mgmt",
+			"path": "./../../mgmt"
+		},
+		{
+			"name": "ml",
+			"path": "."
+		},
+		{
+			"name": "dgrm-api",
+			"path": "src/main/ml-modules/ext/dgrm-api"
+		},
+		{
+			"name": "services",
+			"path": "src/main/ml-modules/services"
+		},
+		{
+			"name": "tests",
+			"path": "tests"
+		}
+
+		/*
+		{
+			"name": "focus",
+			"path": "./src/viewer/components/layout/Viewer"
+		},
+		{
+			"name": "timeline",
+			"path": "./src/viewer/components/base/Time"
+		},
+		{
+			"name": "TCC",
+			"path": "../terra-chrono-cmd"
+		},
+				{
+			"name": "TCM",
+			"path": "."
+		},
+		*/
+	],
+	"settings": {
+		"terminal.integrated.fontSize": 10,
+		"terminal.integrated.fontFamily": "courier new",
+		"terminal.integrated.cwd": "${workspaceRoot}/../cup-repo/framework",
+		"editor.tabSize": 4,
+		"editor.insertSpaces": true,
+		"editor.detectIndentation": true,
+		"editor.wordWrap": "on",
+		"editor.wordWrapColumn": 150,
+		"editor.formatOnSave": true,
+		"editor.formatOnPaste": true,
+		"editor.formatOnType": true,
+		//
+		// COMPACT SETTINGS: BEGIN
+		"editor.minimap.enabled": false,
+		"editor.fontSize": 9,
+		"editor.lineHeight": 14,
+		"editor.renderWhitespace": "none",
+		//"editor.fontFamily": "'Courier New', monospace",
+		//"editor.fontFamily": "monospace",
+		"editor.glyphMargin": false,
+		"editor.lineNumbers": "on",
+		"editor.renderControlCharacters": false,
+		//"workbench.statusBar.visible": false,
+		"editor.scrollbar.vertical": "hidden",
+		"editor.scrollbar.horizontal": "hidden",
+		// COMPACT SETTINGS: END
+		//
+		"editor.cursorBlinking": "smooth",
+		"editor.cursorStyle": "line",
+		"editor.cursorWidth": 3,
+		"editor.fontLigatures": true,
+		"editor.fontWeight": "normal",
+		"editor.guides.indentation": true,
+		"files.exclude": {
+			"target": true,
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true
+		},
+		"files.trimTrailingWhitespace": true,
+		"files.insertFinalNewline": true,
+		"files.trimFinalNewlines": true,
+		//"files.autoSave": "afterDelay",
+		// "files.autoSaveDelay": 1000,
+		"files.associations": {
+			"*.xqy": "xquery",
+			"*.js": "javascript",
+			"*.sjs": "javascript",
+			"*.xq": "xquery",
+		},
+		"files.eol": "\n",
+		"files.encoding": "utf8",
+		"files.defaultLanguage": "xquery",
+	}
+}
