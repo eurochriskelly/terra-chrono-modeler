@@ -8,9 +8,9 @@ module.exports = (
   const matchingUris = getCommonUris(context, params)
   return matchingUris.toArray().map(uri => {
     if (mode === 'ids') {
-        return `${uri}`.split('/').pop().replace('.json', '')
+      return `${uri}`.split('/').pop().replace('.json', '')
     } else {
-        return cts.doc(uri).toObject()
+      return cts.doc(uri).toObject()
     }
   })
 }
