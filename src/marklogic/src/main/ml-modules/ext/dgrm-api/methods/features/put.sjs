@@ -1,9 +1,9 @@
 // Insert features in the database
 const UriMaker = require('/ext/tcm-common/uri-maker.sjs')
-const { II, DD } = require('/ext/tcm-common/log.sjs')
+const { II, DD, fmtLog } = require('/ext/tcm-common/log.sjs')
 
 module.exports = (context, params, input) => {
-  II('PUT', params, input)
+  II('PU:features', params, input)
   // return zero or more document nodes
   const type = 'feature'
 
