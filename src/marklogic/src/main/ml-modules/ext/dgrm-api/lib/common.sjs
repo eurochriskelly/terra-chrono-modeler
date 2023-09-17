@@ -1,5 +1,7 @@
+const { jsonPropertyValueQuery } = cts
 const UriMaker = require('/ext/tcm-common/uri-maker.sjs')
 
+// Search for documents matching the provided parameters
 const getCommonUris = (
   context,
   params
@@ -16,13 +18,24 @@ const getCommonUris = (
     return []
   }
   const UM = new UriMaker({ layer, radius, type: 'feature' })
-  const matchingUris = UM.getMatchingUris(limit, radius ? [
-    cts.jsonPropertyValueQuery('radius', `${radius}`),
-  ] : [])
+  const matchingUris = UM.getMatchingUris(limit, [
+    radius && jsonPropertyValueQuery('radius', `${radius}`),
+    layer && jsonPropertyValueQuery('later', `${layer}`),
+  ].filter(x => x))
   context.outputStatus = [200, 'OK']
   return matchingUris
 }
 
+// Return the ID part of the URI or the complete object if full is requested
+const idOrObject = (
+  uri,
+  mode
+) => mode === 'ids'
+    ? `${uri}`.split('/').pop().replace('.json', '')
+    : cts.doc(uri).toObject()
+
+
 module.exports = {
-  getCommonUris
+  getCommonUris,
+  idOrObject,
 }

@@ -1,4 +1,5 @@
 // Insert features in the database
+const UriMaker = require('/ext/tcm-common/uri-maker.sjs')
 const { II, DD } = require('/ext/tcm-common/log.sjs')
 
 module.exports = (context, params, input) => {
@@ -10,9 +11,8 @@ module.exports = (context, params, input) => {
   // loop over input documents and insert them
 
   // some fault tolerance for id vs uri. both should work.
-  const uri = id.startsWith('/tcm')
-    ? id
-    : `/tcm/${type}/${id}.json`
+  const UM = new UriMaker({ layer, type })
+  const uri = UM.uriFromId(id)
 
   if (!fn.docAvailable(uri)) {
     context.outputStatus = [404, 'Not Found']
@@ -39,11 +39,11 @@ module.exports = (context, params, input) => {
     if (e.message.includes('XDMP-DUPLURI')) {
       context.outputStatus = [409, 'Conflict']
       return null
-   } else {
+    } else {
       throw e
     }
   }
-  
+
   context.outputStatus = [200, 'Modified']
   return null
 }
