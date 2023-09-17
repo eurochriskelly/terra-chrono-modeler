@@ -3,7 +3,7 @@ const UriMaker = require('/ext/tcm-common/uri-maker.sjs')
 
 // Insert features in the database
 module.exports = (context, params, input) => {
-  II('POST', params, input.length)
+  II('POST:features', params, input.length)
   // return zero or more document nodes
   let ids = []
   const type = 'feature'
@@ -29,5 +29,5 @@ module.exports = (context, params, input) => {
   })
 
   context.outputStatus = [201, 'Created']
-  return Sequence.from(ids)
+  return ids
 }

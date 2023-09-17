@@ -12,10 +12,16 @@ class UriMaker {
         this.layer = layer
         this.radius = radius
     }
-    
+
     // by setting the content, we can generated a deterministic uri
     set content(content) {
         this.id = xdmp.md5(JSON.stringify(content))
+    }
+    uriFromId(id) {
+        const uri = id.startsWith('/tcm')
+            ? id
+            : `/tcm/${type}/${id}.json`
+        return uri
     }
     getMatchingUris(limit = 100, queries = []) {
         const query = cts.andQuery([
