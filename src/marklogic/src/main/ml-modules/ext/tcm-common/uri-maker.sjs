@@ -6,11 +6,12 @@ const {
  * Control how URI's are generated for a given content
  */
 class UriMaker {
-    constructor({ type = '', user = '*', layer = '*', radius }) {
+    constructor({ type = '', user = '*', layer = '*', radius, id }) {
         this.type = type
         this.user = user
         this.layer = layer
         this.radius = radius
+        this.id = id
     }
 
     // by setting the content, we can generated a deterministic uri

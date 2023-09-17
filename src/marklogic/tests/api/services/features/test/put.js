@@ -1,6 +1,6 @@
 import { wrapCollection } from '../../../lib/helper.js'
 
-export default (apiDetails, auth) => {
+export default (apiDetails, auth, args) => {
     return wrapCollection([
         {
             name: 'Create new features',
@@ -36,7 +36,7 @@ export default (apiDetails, auth) => {
                 url: {
                     ...apiDetails,
                     query: [
-                        { key: 'rs:id', value: ARGS.SAMPLE_ID },
+                        { key: 'rs:id', value: args.SAMPLE_ID },
                         { key: 'rs:radius', value: '1000' },
                         { key: 'rs:layer', value: 'continent2' },
                     ],
