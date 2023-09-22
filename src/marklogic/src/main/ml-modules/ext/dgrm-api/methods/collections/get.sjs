@@ -1,11 +1,12 @@
+const { II } = require('/ext/tcm-common/log.sjs')
 const UriMaker = require('/ext/tcm-common/uri-maker.sjs')
-const { getCommonUris, idOrObject } = require('/ext/dgrm-api/lib/common.sjs')
 
 // GET function
 module.exports = (
   context,
   params
 ) => {
+  II('GET:collections', params)
   const { id } = params
   if (!id) {
     context.outputStatus = [400, 'No ID provided']

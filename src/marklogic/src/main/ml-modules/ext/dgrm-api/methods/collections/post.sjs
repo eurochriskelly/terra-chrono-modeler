@@ -1,6 +1,6 @@
-const { processInstructions } = require('../../lib/collections.sjs')
 const { II } = require('/ext/tcm-common/log.sjs')
 const UriMaker = require('/ext/tcm-common/uri-maker.sjs')
+const { processInstructions } = require('/ext/dgrm-api/lib/collections.sjs')
 
 /**
  * Description:
@@ -11,12 +11,16 @@ const UriMaker = require('/ext/tcm-common/uri-maker.sjs')
  *   store the rejection information in the properties of the collection
  */
 module.exports = (context, params, input) => {
-    II('POST:collections', params, input.length)
+    II('POST:collections', params, `${input}`.length)
     const { radius, user = 'default' } = params
     const UM = new UriMaker({ type: 'collection', radius, user })
     // return zero or more document nodes
     const rejected = []
     const instruction = processInstructions(input, rejected, radius, context)
+    const features = instruction
+        .filter(x => x.$op === 'add')
+        .map(x => x.uri)
+
     const content = {
         type: 'FeatureCollection',
         properties: {
@@ -24,7 +28,7 @@ module.exports = (context, params, input) => {
         },
         // TODO: Allow query params instead of a list of ids
         //       as alternative way of selecting features
-        features:
+        features,
     }
 
     UM.content = content

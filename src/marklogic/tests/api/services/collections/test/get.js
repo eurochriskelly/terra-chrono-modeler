@@ -1,6 +1,6 @@
 import { wrapCollection } from '../../../lib/helper.js'
 
-export default (apiDetails, auth) => {
+export default (apiDetails, auth, args) => {
     return wrapCollection([
         {
             name: 'Request for a radius where we have data',
@@ -12,7 +12,7 @@ export default (apiDetails, auth) => {
                 url: {
                     ...apiDetails,
                     query: [
-                        { key: 'rs:id', value: '2b69eee4904a2974c208cf11c290f540' },
+                        { key: 'rs:id', value: args.SAMPLE_ID },
                     ]
                 },
             },
@@ -28,7 +28,8 @@ export default (apiDetails, auth) => {
                             '',
                             'pm.test("Response has expected keys", function () {',
                             '    var jsonData = pm.response.json();',
-                            '    pm.expect(jsonData).to.have.length(2);',
+                            '    pm.expect(jsonData.features).to.have.length(1);',
+                            '    pm.expect(jsonData.properties.name).to.eql("Sub-Saharan Africa 2");',
                             '});',
                         ],
                         type: 'text/javascript',

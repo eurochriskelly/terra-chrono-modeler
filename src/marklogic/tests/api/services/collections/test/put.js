@@ -39,6 +39,7 @@ export default (apiDetails, auth, args) => {
                     query: [
                         // The id of the collection to update
                         { key: 'rs:id', value: args.SAMPLE_ID },
+                        { key: 'rs:radius', value: '1000' },
                         // This should rename the property
                         { key: 'rs:name', value: 'Sub-Saharan Africa 2' },
                     ],
@@ -51,7 +52,7 @@ export default (apiDetails, auth, args) => {
                     script: {
                         exec: [
                             'pm.test("Status code is 201", function () {',
-                            '    pm.response.to.have.status(201);',
+                            '    pm.expect(pm.response.code).to.eql(201);',
                             '});',
                         ],
                         type: 'text/javascript',
