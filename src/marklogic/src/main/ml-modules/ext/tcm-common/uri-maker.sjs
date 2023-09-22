@@ -39,7 +39,7 @@ class UriMaker {
     get collections() {
         return [
             `/tcm/geometry`,
-            `/tcm/type/feature`,
+            `/tcm/type/${this.type}`,
         ]
     }
 }

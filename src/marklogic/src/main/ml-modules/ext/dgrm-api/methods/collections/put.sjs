@@ -1,5 +1,6 @@
 const { II } = require('/ext/tcm-common/log.sjs')
 const UriMaker = require('/ext/tcm-common/uri-maker.sjs')
+const { processInstructions } = require('/ext/dgrm-api/lib/collections.sjs')
 
 /**
  * Description:
@@ -10,15 +11,21 @@ const UriMaker = require('/ext/tcm-common/uri-maker.sjs')
  *   store the rejection information in the properties of the collection
  */
 module.exports = (context, params, input) => {
-    II('PUT:collections', params, input.length)
-    const { radius, user = 'default' } = params
-    const UM = new UriMaker({ type: 'collection', radius, user })
+    II('PUT:collections', params, `${input}`.length)
+    const { id, radius, name,  user = 'default' } = params
+    const uri = `/tcm/collection/${id}.json`
+
     // return zero or more document nodes
-    const instructions = processInstructions(input, rejected, radius, context)
-    const newFeatures = instructions
-        .filter(i => i.$op === 'add')
-        .map(i => i.uri)
     const rejected = []
+    const instructions = processInstructions(input, rejected, radius, context)
+    const list = {}
+    instructions
+        .filter(i => i.$op === 'add')
+        .forEach(i => list[i.uri] = true)
+    instructions
+        .filter(i => i.$op === 'remove')
+        .forEach(i => list[i.uri] = false)
+
     const content = {
         type: 'FeatureCollection',
         properties: {
@@ -26,19 +33,19 @@ module.exports = (context, params, input) => {
         },
         // TODO: Allow query params instead of a list of ids
         //       as alternative way of selecting features
-        features: newFeatures
+        features: Object.entries(list).filter(([_, v]) => v).map(([k, _]) => k)
     }
 
-    UM.content = content
     content.properties.created = new Date().toISOString()
     if (rejected.length) {
         content.properties.rejected = rejected
     }
-    xdmp.invokeFunction(() => xdmp.documentInsert(UM.uri, content, {
+    xdmp.invokeFunction(() => xdmp.documentInsert(uri, content, {
         permissions: xdmp.defaultPermissions(),
-        collections: UM.collections,
+        collections: xdmp.documentGetCollections(uri),
     }), {
-        transactionMode: 'update-auto-commit'
+        transactionMode: 'update-auto-commit',
+	isolation: 'different-transaction',
     })
 
     context.outputStatus = [201, 'Created']
