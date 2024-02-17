@@ -22,9 +22,11 @@ export class DgrmApiCli {
             const parts = line.trim().split(' ')
             const command = parts[0].trim()
             switch (command) {
+                case 'f':
                 case 'features':
                     console.log('Processing feature command')
                     break;
+                case 'c':
                 case 'collections':
                     console.log('Processing collections command')
                     break;

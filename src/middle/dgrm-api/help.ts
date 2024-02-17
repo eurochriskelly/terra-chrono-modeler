@@ -1,3 +1,5 @@
+// TODO: generate help text from command definitions
+
 const topLevelHelp = () => {
     console.log('The following commands are available:')
     console.log('  features')
